@@ -1,0 +1,13 @@
+Aplicativo de Planejamento Financeiro Pessoal
+
+Dark/light mode persistente
+
+CRUD local com IndexedDB ou localStorage
+
+Gráficos de despesas/renda
+
+Categorização automática
+
+Exportação para CSV/PDF
+
+Sistema de metas e alertas
