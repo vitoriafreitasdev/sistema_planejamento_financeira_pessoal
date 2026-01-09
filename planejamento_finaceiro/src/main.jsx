@@ -9,6 +9,7 @@ import Home from './componentes/Home.jsx'
 import {createBrowserRouter, RouterProvider} from "react-router-dom"
 import {Provider} from "react-redux"
 import {store} from './redux/store.js'
+import Dashboard from './routes/Dashboard.jsx'
 
 const router = createBrowserRouter(
   [
@@ -19,6 +20,10 @@ const router = createBrowserRouter(
       {
         path: "/",
         element: <Home/>
+      },
+      {
+        path: "/dashboard",
+        element: <Dashboard/>
       }
     ]
    }

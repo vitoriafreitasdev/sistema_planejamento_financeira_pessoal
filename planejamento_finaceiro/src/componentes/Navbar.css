@@ -1,0 +1,31 @@
+.navbar{
+    width: 88.8%;
+    display: flex;
+    padding: 10px;
+    margin: 0 auto;
+    margin-top: 1.5rem;
+    justify-content: space-between;
+    background-color: #e2e2e2;
+    border-radius: 2.5rem;
+}
+
+.navbar h3{
+    text-align: center;
+    width: 95%;
+    padding: 0.5rem;
+    border-radius: 2.5rem;
+    background-color: #e2e2e2;
+}
+
+.nav-links{
+    text-decoration: none;
+    color: black;
+    width: 100%;
+    background-color: #e2e2e2;
+    margin: 0px 7px;
+}
+
+.navbar h3:hover{
+    background-color: #f1f1f1;
+    box-shadow: 1px 1px 7px rgb(70, 70, 70);
+}

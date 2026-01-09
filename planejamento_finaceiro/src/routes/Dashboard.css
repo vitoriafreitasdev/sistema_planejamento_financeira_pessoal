@@ -1,0 +1,57 @@
+.container-info{
+    display: flex;
+    justify-content: center;
+}
+
+.container-info div {
+    margin: 2rem 1rem;
+    padding: 2rem;
+    border: 1px solid #c7c7c7;
+    width: 16.7vw;
+    border-radius: 1rem;
+}
+
+.container-info div  h4{
+    margin-bottom: 2.5rem;
+}
+
+.container-info div .p-num{
+    font-size: x-large;
+    font-weight: bolder;
+}
+
+.saldo, .economia{
+    color: black;
+}
+
+.receita {
+    color: green;
+}
+
+.despesa {
+    color: red;
+}
+
+
+.p-info{
+    margin-top: 0.5rem;
+    color: #6d6d6d;
+}
+
+.saldo-info{
+    color: green;
+}
+
+.container-graficos{
+    display: flex;
+    justify-content: center;
+}
+
+.tendencia-mensal, .despesa-categoria{
+    padding: 1rem;
+    margin: 1rem;
+    width: 42%;
+    height: 300px;
+    border: 1px solid #c7c7c7;
+    border-radius: 15px;
+}
