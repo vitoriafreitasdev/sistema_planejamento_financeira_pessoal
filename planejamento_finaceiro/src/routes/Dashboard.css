@@ -46,7 +46,9 @@
     display: flex;
     justify-content: center;
 }
-
+.container-graficos p, h3{
+    margin-top: 10px;
+}
 .tendencia-mensal, .despesa-categoria{
     padding: 1rem;
     margin: 1rem;
@@ -58,4 +60,47 @@
 
 .grafico-div{
     width: 100%;
+}
+.orçamentoXrealizado{
+    margin: 1rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.container{
+    border: 1px solid #c7c7c7;    
+    width: 89.5vw;
+    border-radius: 15px;
+    padding: 1rem;
+
+}
+
+.orçamentoXrealizado p{
+    font-weight: bold;
+    color: #6d6d6d;
+    margin-top: 1rem;
+    
+}
+
+
+@media (min-width:300px) and (max-width: 799px) {
+    .container-info{
+        flex-direction: column;
+    }
+
+    .container-info div {
+        width: 70vw;
+    }
+
+    .container-graficos{
+        flex-direction: column;
+    }
+    .tendencia-mensal, .despesa-categoria{
+        width: 80vw;
+        height: 500px;
+
+    }
 }

@@ -1,9 +1,9 @@
-
+import "./configs/Bar.js"
+import "./OrcamentRealiz.css"
 import { Bar } from "react-chartjs-2";
-export const OrcamentRealiz = ({ chartData }) => {
+const OrcamentRealiz = ({ chartData }) => {
   return (
-    <div className="chart-container">
-      <h2 style={{ textAlign: "center" }}>Bar Chart</h2>
+    <div className="chart-container-bar">
       <Bar
         data={chartData}
         options={{
@@ -13,7 +13,7 @@ export const OrcamentRealiz = ({ chartData }) => {
               text: "Orçamento X Realizado"
             },
             legend: {
-              display: false
+              display: true
             }
           }
         }}
@@ -21,3 +21,5 @@ export const OrcamentRealiz = ({ chartData }) => {
     </div>
   );
 };
+
+export default OrcamentRealiz

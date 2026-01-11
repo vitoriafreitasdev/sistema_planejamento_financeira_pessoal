@@ -7,6 +7,8 @@ import Graffic from "../graficos/Graffic.jsx"
 import DespesaCategoria from "../graficos/DespesaCategoria.jsx"
 import OrcamentRealiz from "../graficos/OrcamentRealiz.jsx"
 
+// fazer a home
+
 const Dashboard = () => {
     const [chartData] = useState({
     labels: Data.map((data) => data.year), 
@@ -58,7 +60,7 @@ const Dashboard = () => {
     labels: Orcament_Realizado.map((data) => data.category),
     datasets: [
       {
-        label: "Despesas por Categoria",
+        label: "Realizado",
         data: Orcament_Realizado.map((data) => data.orcament),
         backgroundColor: [
           "rgb(16, 124, 6)",
@@ -70,7 +72,7 @@ const Dashboard = () => {
         borderWidth: 2
       },
       {
-        label: "Despesas por Categoria",
+        label: "Orçamento",
         data: Orcament_Realizado.map((data) => data.gasto),
         backgroundColor: [
           "rgb(216, 14, 0)",
@@ -111,7 +113,7 @@ const Dashboard = () => {
 
         <div className="container-graficos">
             <div className="tendencia-mensal">
-                <p>Tendencia Mensal</p>
+                <h3>Tendencia Mensal</h3>
                 <p>Receitas vs Despesas nos último 6 meses</p>
                 <div className="grafico-div">
                    <Graffic key="tendencia-mensal-chart"  chartData={chartData} />
@@ -119,7 +121,7 @@ const Dashboard = () => {
             </div>
 
             <div className="despesa-categoria">
-                <p>Despesas por Categoria</p>
+                <h3>Despesas por Categoria</h3>
                 <p>Distribuição dos gastos</p>
                 <div className="grafico-div">
                     <DespesaCategoria key="despesas-por-categoria" despesa={despesa}/>
@@ -127,14 +129,15 @@ const Dashboard = () => {
             </div>
         </div>
 
-        <div className="orçamentoXrealizado-container">
-            <div>
-              <h4>Orçamento X Realizado</h4>
-              <p>Compare seus limites com os seus gastos reais</p>
-            </div>
-            {/* ve se funcionou */}
-            <div className="grafico-container">
-                <OrcamentRealiz chartData={realiz}/>
+        <div className="orçamentoXrealizado">
+            <div className="container">
+                <div>
+                <h2>Orçamento X Realizado</h2>
+                <p>Compare seus limites com os seus gastos reais</p>
+              </div>
+              <div className="grafico-container">
+                  <OrcamentRealiz chartData={realiz}/>
+              </div>
             </div>
         </div>
     </div>

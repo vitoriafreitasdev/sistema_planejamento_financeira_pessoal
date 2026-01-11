@@ -29,3 +29,56 @@
     background-color: #f1f1f1;
     box-shadow: 1px 1px 7px rgb(70, 70, 70);
 }
+
+.menu-btn-container{
+    display: none;
+}
+
+@media (min-width: 300px) and (max-width: 800px){
+
+    .menu-btn-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 1rem;
+    
+    }
+
+     .menu-btn-container button {
+        border: none;
+        background-color: #e2e2e2;
+        padding: 0.5rem;
+        width: 50%;
+        margin: 0 auto;
+        text-decoration: underline;
+     }
+    .navbar{
+        flex-direction: column;
+        align-items: center;
+        display: none;
+    }
+
+    .on{
+        display: flex;
+    }
+    .navbar h3{
+        text-align: center;
+        width: 95%;
+        padding: 0.5rem;
+        border-radius: 2.5rem;
+        background-color: #e2e2e2;
+    }
+
+    .nav-links{
+        text-decoration: none;
+        color: black;
+        width: 90%;
+        background-color: #e2e2e2;
+        margin: 1px 7px;
+    }
+
+    .navbar h3:hover{
+        background-color: #f1f1f1;
+        box-shadow: 1px 1px 5px 1px rgb(70, 70, 70);
+    }
+}
