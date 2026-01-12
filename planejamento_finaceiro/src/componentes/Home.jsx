@@ -1,16 +1,26 @@
 
-//Home.jsx
-// import {useSelector, useDispatch} from "react-redux"
-//import { teste } from "../redux/slices/sistemaSlice"
-
+import "./Home.css"
 const Home = () => {
-  // const contador = useSelector((state) => state.sistema.contador)
-  // const dispatch = useDispatch()
 
   return (
-    <div>
-      {/* <button onClick={() => dispatch(teste(10))}>Adicionar Valor 10</button> */}
-      
+    <div className="home">
+        <div className="div-convite">
+          <h1>Uma maneira simples de organizar as suas finaças pessoais.</h1>
+          <p>
+              Se junte aos nossos outros usuários e utilize nosso sistema para gerenciar seus gastos e se prevenir de tomar aquele susto de final de mês.
+              <span>Atualize suas transações, orçamentos e metas para ter acesso ao Dashboard interativo como o da imagem.</span>
+          </p>
+          
+        </div>
+
+
+        <div className="images">
+          <div className="div-imagem">
+          </div>
+          <div className="div-imagem2">
+          </div>
+        </div>
+  
     </div>
   )
 }

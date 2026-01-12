@@ -1,0 +1,127 @@
+.home{
+    display: flex;
+}
+.images{
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #c7c7c7; 
+    border-radius: 15px;
+    margin-top: 7rem;
+    margin-left: 10rem;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+    padding: 0.3rem;
+}
+.div-imagem{
+    background: url("../images/dashboard1.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 50vw;
+    height: 50vh;
+    
+    
+}
+
+.div-imagem2 {
+    background: url("../images/dashboard2.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 50vw;
+    height: 30vh;
+    
+}
+
+.div-convite{
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+}
+.div-convite h1{
+    font-size: 42px;
+    font-weight: bolder;
+    color: rgb(1, 50, 95);
+    text-indent: 10px;
+
+}
+.div-convite p {
+    margin-top: 2rem;
+    font-size: larger;
+    font-weight: bolder;
+    color: rgb(73, 73, 73);
+    text-indent: 10px;
+
+}
+
+.div-convite span {
+    display: block;
+    text-indent: 10px;
+    margin-top: 10px;
+
+}
+
+@media (min-width: 300px) and (max-width: 1769px) {
+    .div-convite h1{ 
+        font-size: 32px;
+    }
+
+    .div-convite p {
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 300px) and (max-width: 908px) {
+    .home{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .div-convite{
+        margin: 2rem auto;
+        width: 80%;
+    }
+
+    
+
+    .images{
+        border-radius: 15px;
+        margin: 3rem auto;
+        width: 80vw;
+    }
+
+    .div-imagem{
+        width: 80vw;
+        height: 50vh;  
+    }
+
+    .div-imagem2 {
+        width: 80vw;
+    }
+   
+}
+
+@media (min-width: 300px) and (max-width: 500px) {
+    .images{
+        border-radius: 15px;
+        margin: 3rem auto;
+        width: 80vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .div-imagem{
+        width: 80vw;
+        height: 50vh;  
+        
+    }
+
+    .div-imagem2 {
+        width: 300px;
+        border: none;
+    }
+}

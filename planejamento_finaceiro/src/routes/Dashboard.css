@@ -62,17 +62,18 @@
     width: 100%;
 }
 .orçamentoXrealizado{
-    margin: 1rem;
+    margin: 1rem auto;
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+
 }
 
 .container{
     border: 1px solid #c7c7c7;    
-    width: 89.5vw;
+    width: 87vw;
     border-radius: 15px;
     padding: 1rem;
 

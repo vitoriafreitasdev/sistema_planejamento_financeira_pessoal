@@ -10,6 +10,7 @@ import {createBrowserRouter, RouterProvider} from "react-router-dom"
 import {Provider} from "react-redux"
 import {store} from './redux/store.js'
 import Dashboard from './routes/Dashboard.jsx'
+import Transacoes from './routes/Transacoes.jsx'
 
 const router = createBrowserRouter(
   [
@@ -24,6 +25,11 @@ const router = createBrowserRouter(
       {
         path: "/dashboard",
         element: <Dashboard/>
+      }
+      ,
+      {
+        path: "/transacoes",
+        element: <Transacoes/>
       }
     ]
    }
