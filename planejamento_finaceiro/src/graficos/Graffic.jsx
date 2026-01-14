@@ -13,7 +13,7 @@ export default function Graffic({ chartData }) {
           plugins: {
             title: {
               display: true,
-              text: "Users Gained between 2016-2020"
+              text: "Ganhos X Despesas"
             },
             legend: {
               display: false
