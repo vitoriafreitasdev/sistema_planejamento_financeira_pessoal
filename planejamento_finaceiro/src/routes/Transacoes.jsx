@@ -62,7 +62,7 @@ const Transacoes = () => {
             despOuReceit === "despesa" ? 
             <select onChange={(e) => setCategoria(e.target.value)}>
               <option value="">Selecione uma opção</option>
-              <option value="alimentacao">Comida</option>
+              <option value="alimentacao">Alimentação</option>
               <option value="transporte">Transporte</option>
               <option value="moradia">Moradia</option>
               <option value="Lazer">Lazer</option>

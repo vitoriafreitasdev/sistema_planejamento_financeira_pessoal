@@ -1,46 +1,24 @@
 import { useState } from "react"
-import { useSelector } from "react-redux"
-export default function Dados(){
-    const historico = useSelector((state) => state.sistema.historico)
+import { useDispatch, useSelector } from "react-redux"
+import { dadosDespCategoria, dadosReceitaDesp } from "../redux/slices/sistemaSlice"
+export default function  Dados(){
+    const dispatch = useDispatch()
+    dispatch(dadosReceitaDesp())
+    dispatch(dadosDespCategoria())
+    const labels = useSelector((state) => state.sistema.labels)
+    const receita = useSelector((state) => state.sistema.receita)
+    const despesa = useSelector((state) => state.sistema.despesa)
 
-    const labels = []
-    const receita = {}
-    const despesa = {}
-
-    for (let c in historico){
-        labels.push(c)
-        historico[c].forEach(element => {
-            if(element.receita_desp === "receita") {
-                if(!receita[c]){
-                    receita[c] = 0
-                }
-                receita[c] += parseFloat(element.valor)
-            }
-            if(element.receita_desp === "despesa") {
-                if(!despesa[c]){
-                    despesa[c] = 0
-                }
-                despesa[c] += parseFloat(element.valor)
-            }
-        })
-    }
-    const labelsSort = labels.sort((a, b) => a.localeCompare(b))
 
     const [grafficValores] = useState({
-        labels: labelsSort,
+        labels: labels,
         datasets: [
             {
                 label: "Receita",
                 data: receita,
-                backgroundColor: [
-                "rgba(75,192,192,1)",
-                "#ecf0f1",  
-                "#50AF95",
-                "#f3ba2f",
-                "#2a71d0"
-                ],
-        borderColor: "green",
-        borderWidth: 2
+                backgroundColor: "#5ac9ab",
+                borderColor: "green",
+                borderWidth: 2
             },
             {
                 label: "Despesa",
