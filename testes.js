@@ -45,16 +45,16 @@ const teste = {
 }
 
 
-for(chave in teste){
- teste[chave].forEach((element) => {
-  console.log(element)
- });
-}
+// for(chave in teste){
+//  teste[chave].forEach((element) => {
+//   console.log(element)
+//  });
+// }
 
 
-
-
-
+const arr = ["2025-01-10", "2025-02-02", "2025-01-04"]
+arr.sort((a, b) => a.localeCompare(b))
+console.log(arr)
 
 
 

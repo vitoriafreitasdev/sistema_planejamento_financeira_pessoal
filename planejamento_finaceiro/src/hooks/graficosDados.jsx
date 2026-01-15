@@ -4,23 +4,30 @@ export default function Dados(){
     const historico = useSelector((state) => state.sistema.historico)
 
     const labels = []
-    const receita = []
-    const despesa = []
+    const receita = {}
+    const despesa = {}
 
     for (let c in historico){
         labels.push(c)
         historico[c].forEach(element => {
             if(element.receita_desp === "receita") {
-                receita.push(element.valor)
+                if(!receita[c]){
+                    receita[c] = 0
+                }
+                receita[c] += parseFloat(element.valor)
             }
             if(element.receita_desp === "despesa") {
-                despesa.push(element.valor)
+                if(!despesa[c]){
+                    despesa[c] = 0
+                }
+                despesa[c] += parseFloat(element.valor)
             }
         })
     }
+    const labelsSort = labels.sort((a, b) => a.localeCompare(b))
 
     const [grafficValores] = useState({
-        labels: labels,
+        labels: labelsSort,
         datasets: [
             {
                 label: "Receita",

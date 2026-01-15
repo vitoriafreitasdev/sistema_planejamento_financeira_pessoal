@@ -9,7 +9,6 @@ import Dados from "../hooks/graficosDados.jsx"
 const Dashboard = () => {
     
   const {grafficValores} = Dados()
-  console.log(grafficValores)
 
   return (
     <div className='dashboard-main-container'>
@@ -42,7 +41,7 @@ const Dashboard = () => {
                 <h3>Tendencia Mensal</h3>
                 <p>Receitas vs Despesas</p>
                 <div className="grafico-div">
-                   <Graffic key="tendencia-mensal-chart"  chartData={grafficValores} />
+                    <Graffic key="tendencia-mensal-chart"  chartData={grafficValores} /> 
                 </div>
             </div>
 
