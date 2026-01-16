@@ -8,6 +8,8 @@ const estadoInicial = {
     receita: {},
     despesa: {},
     labels: [],
+    totalDeDespesas: 0,
+    receitaTotal: 0,
     categoriaDeDespesas: []
 }
 
@@ -31,7 +33,8 @@ const sistemaSlice = createSlice(
             dadosReceitaDesp: (state) => {
 
                 //Aqui para receita x despesa
-               
+                
+                let receitaValorTotal = 0
                 const labels = []
                 const receita = {}
                 const despesa = {}
@@ -44,12 +47,14 @@ const sistemaSlice = createSlice(
                                 receita[c] = 0
                             }
                             receita[c] += parseFloat(element.valor)
+                            receitaValorTotal += parseFloat(element.valor)
                         }
                         if(element.receita_desp === "despesa") {
                             if(!despesa[c]){
                                 despesa[c] = 0
                             }
                             despesa[c] += parseFloat(element.valor)
+                            
                         }
                     })
                 }
@@ -58,6 +63,8 @@ const sistemaSlice = createSlice(
                 state.despesa = despesa
                 state.receita = receita
                 state.labels = labelsSort
+                state.receitaTotal = receitaValorTotal
+                
             },
             dadosDespCategoria: (state) => {
                 const categorias = {}
@@ -75,13 +82,19 @@ const sistemaSlice = createSlice(
                         }
                     })
                 }
-                // continuar o calculo de porcentagem
+
                 /* 
                 calculo de porcentagem
                 parte/total x 100
-
-                80 / 4830 x 100 = 1.66%
                 */
+
+                for (let obj in categorias){
+                    const porcentagem = Math.round((categorias[obj] / total) * 100)
+                    categorias[obj] = {valor: categorias[obj], porcentagem: porcentagem}
+                }
+
+                state.categoriaDeDespesas = categorias
+                state.totalDeDespesas = total
                 
             }
         }

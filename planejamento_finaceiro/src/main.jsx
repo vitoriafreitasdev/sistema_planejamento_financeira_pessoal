@@ -11,6 +11,7 @@ import {Provider} from "react-redux"
 import {store} from './redux/store.js'
 import Dashboard from './routes/Dashboard.jsx'
 import Transacoes from './routes/Transacoes.jsx'
+import Historico from './routes/Historico.jsx'
 
 const router = createBrowserRouter(
   [
@@ -30,6 +31,10 @@ const router = createBrowserRouter(
       {
         path: "/transacoes",
         element: <Transacoes/>
+      },
+      {
+        path: "/historico",
+        element: <Historico/>
       }
     ]
    }

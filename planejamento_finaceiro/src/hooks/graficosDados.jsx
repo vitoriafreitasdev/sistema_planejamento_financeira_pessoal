@@ -3,13 +3,19 @@ import { useDispatch, useSelector } from "react-redux"
 import { dadosDespCategoria, dadosReceitaDesp } from "../redux/slices/sistemaSlice"
 export default function  Dados(){
     const dispatch = useDispatch()
+    // Para receita x despesa
     dispatch(dadosReceitaDesp())
-    dispatch(dadosDespCategoria())
     const labels = useSelector((state) => state.sistema.labels)
     const receita = useSelector((state) => state.sistema.receita)
     const despesa = useSelector((state) => state.sistema.despesa)
+    // Para Despesa por categoria
+    dispatch(dadosDespCategoria())
+    const totalDespesas = useSelector((state) => state.sistema.totalDeDespesas)
+    const receitaTotal = useSelector((state) => state.sistema.receitaTotal)
+    const categorias = useSelector((state) => state.sistema.categoriaDeDespesas)
 
 
+  
     const [grafficValores] = useState({
         labels: labels,
         datasets: [
@@ -31,7 +37,27 @@ export default function  Dados(){
         ]
     })
 
-    return {grafficValores}
+  
+    const [despesasCategorias] = useState({
+        labels: Object.keys(categorias),
+        datasets: [
+            {
+                label: "despesa por categoria",
+                data: Object.values(categorias).map((value) => value.porcentagem),
+                backgroundColor: [
+                "rgba(75,192,192,1)",
+                "#ecf0f1",  
+                "#50AF95",
+                "#f3ba2f",
+                "#2a71d0"
+                ],
+                borderColor: "green",
+                borderWidth: 2
+            }
+        ]
+    })
+
+    return {grafficValores, despesasCategorias, totalDespesas, receitaTotal}
     
 }
 
