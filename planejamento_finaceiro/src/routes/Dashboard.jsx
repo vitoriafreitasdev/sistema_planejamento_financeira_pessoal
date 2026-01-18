@@ -39,7 +39,7 @@ const Dashboard = () => {
         <div className="container-graficos">
             <div className="tendencia-mensal">
                 <h3>Tendencia Mensal</h3>
-                <p>Receitas vs Despesas</p>
+                <p>Receitas vs Despesas, últimas 6 registradas</p>
                 <div className="grafico-div">
                     <Graffic key="tendencia-mensal-chart"  chartData={grafficValores} /> 
                 </div>

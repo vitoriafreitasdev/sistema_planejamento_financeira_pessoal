@@ -12,9 +12,77 @@
     border-radius: 1rem;
 }
 
+.h3-transacoes{
+    margin-bottom: 5px;
+}
+
+.p-total{
+    color: #646464;
+}
 .transicoes{
     border: 1px solid #c7c7c7;
     margin: 1rem;
     padding: 1rem;
     border-radius: 1rem;
+}
+
+.itens{
+    display: flex;
+    justify-content: space-between;
+}
+
+.itens-div{
+    display: flex;
+    align-items: center;
+    margin-top: 1.5rem;
+}
+
+.img-icone{
+    width: 30px;
+    height: 30px;
+    margin-left: 7px;
+    cursor: pointer;
+}
+
+.itens-div1{
+    display: flex;
+    align-items: center;
+}
+
+.img-seta{
+    width: 50px;
+}
+
+.descricao-span{
+    font-size: larger;
+    color: black;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.categoria-span{
+    border: 1px solid #c7c7c7;
+    border-radius: 0.5rem;
+    padding: 2.5px;
+    margin-left: 5px;
+    font-weight: bold;
+    color: #646464;
+    text-transform: capitalize;
+
+}
+
+.data{
+    margin-top: 7px;
+    color: #646464;
+}
+
+.receita-p{
+    color: green;
+    font-weight: bolder;
+}
+
+.despesa-p{
+    color: red;
+    font-weight: bolder;
+
 }

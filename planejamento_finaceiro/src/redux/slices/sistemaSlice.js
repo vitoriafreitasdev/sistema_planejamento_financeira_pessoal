@@ -2,9 +2,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const localSave = localStorage.getItem("historico")
+const dadosSave = localStorage.getItem("dados")
 
 const estadoInicial = { 
-    historico: localSave ? JSON.parse(localSave) : {},
+    historico: localSave ? JSON.parse(localSave) : {}, // var para os graficos
+    dados: dadosSave ? JSON.parse(dadosSave) : [], // var para o historico de transacao
     receita: {},
     despesa: {},
     labels: [],
@@ -20,15 +22,22 @@ const sistemaSlice = createSlice(
         reducers: {
             passarTransacao: (state, action) => {
                 const transacao = action.payload
-                const data =  transacao.data
+                const ano = transacao.data.split("-")[0]
+                const mes = transacao.data.split("-")[1]
+                const data =  ano + "/" + mes
+                
                 if (!state.historico[data]){
                     state.historico[data] = []
                 }
                 
                 state.historico[data].push(transacao);
-                
+                state.dados = Object.values(state.historico)
+
+                const dadosParaStorage = JSON.stringify(state.dados)
                 const objeto = JSON.stringify(state.historico)
+
                 localStorage.setItem("historico", objeto)
+                localStorage.setItem("dados", dadosParaStorage)
             },
             dadosReceitaDesp: (state) => {
 
@@ -40,28 +49,40 @@ const sistemaSlice = createSlice(
                 const despesa = {}
             
                 for (let c in state.historico){
-                    labels.push(c)
+                    const data = c
+                    
+                    if (!labels.includes(data)) labels.push(data)
+                        
                     state.historico[c].forEach(element => {
                         if(element.receita_desp === "receita") {
-                            if(!receita[c]){
-                                receita[c] = 0
+                            if(!receita[data]){
+                                receita[data] = 0
                             }
-                            receita[c] += parseFloat(element.valor)
+                            receita[data] += parseFloat(element.valor)
                             receitaValorTotal += parseFloat(element.valor)
                         }
                         if(element.receita_desp === "despesa") {
-                            if(!despesa[c]){
-                                despesa[c] = 0
+                            if(!despesa[data]){
+                                despesa[data] = 0
                             }
-                            despesa[c] += parseFloat(element.valor)
+                            despesa[data] += parseFloat(element.valor)
                             
                         }
                     })
-                }
-                const labelsSort = labels.sort((a, b) => a.localeCompare(b))
 
-                state.despesa = despesa
-                state.receita = receita
+                    
+
+                }
+                const labelsSort = labels.sort((a, b) => a.localeCompare(b)).slice(0, 5)
+ 
+                const receitaObj = Object.values(receita)
+                const receitaArr = receitaObj.slice(0, 5)
+                
+                const despesaObj = Object.values(despesa)
+                const despesaArr = despesaObj.slice(0, 5)
+
+                state.despesa = despesaArr
+                state.receita = receitaArr
                 state.labels = labelsSort
                 state.receitaTotal = receitaValorTotal
                 
@@ -96,10 +117,29 @@ const sistemaSlice = createSlice(
                 state.categoriaDeDespesas = categorias
                 state.totalDeDespesas = total
                 
+            },
+            excluirDados: (state, action) => {
+                const descricao = action.payload.descricao 
+                const categoria = action.payload.categoria 
+                const data = action.payload.data 
+
+                const novosDados = []
+                state.dados.forEach((d) => {
+                    const novoArr = d.filter((d) => d.descricao != descricao || d.categoria != categoria || d.data != data)
+                    if(novoArr.length > 0) novosDados.push(novoArr)
+                })
+
+                state.dados = novosDados
+                localStorage.removeItem("dados")
+
+                const dadosParaStorage = JSON.stringify(novosDados)
+                localStorage.setItem("dados", dadosParaStorage)
+
+                
             }
         }
     }
 )
 
-export const {passarTransacao, dadosReceitaDesp, dadosDespCategoria} = sistemaSlice.actions
+export const {passarTransacao, dadosReceitaDesp, dadosDespCategoria, excluirDados} = sistemaSlice.actions
 export default sistemaSlice.reducer
