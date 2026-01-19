@@ -21,6 +21,27 @@ const sistemaSlice = createSlice(
         initialState: estadoInicial,
         reducers: {
             passarTransacao: (state, action) => {
+                const historicoSalvo = JSON.parse(localSave)
+                // fazer mais testes para ve se tudo  esta funcional 
+                if(historicoSalvo){
+                    const historicoTam = Object.keys(JSON.parse(localSave)).length
+                    console.log("Tamanho do historico: ", historicoTam)
+
+                    if(historicoTam >= 12){
+                        const newKeys = Object.keys(historicoSalvo).slice(5, 12)
+                        const filteredObject = Object.fromEntries(
+                        Object.entries(historicoSalvo).filter(([key]) => {
+                            return newKeys.includes(key);
+                        })
+                        );
+                        state.historico = filteredObject
+                        console.log("Objeto filtrado: ")
+                        console.log(filteredObject)
+                        localStorage.removeItem("historico")
+                        localStorage.setItem("historico", filteredObject)
+                    }
+                }
+
                 const transacao = action.payload
                 const ano = transacao.data.split("-")[0]
                 const mes = transacao.data.split("-")[1]
@@ -36,6 +57,7 @@ const sistemaSlice = createSlice(
                 const dadosParaStorage = JSON.stringify(state.dados)
                 const objeto = JSON.stringify(state.historico)
 
+                localStorage.removeItem("historico")
                 localStorage.setItem("historico", objeto)
                 localStorage.setItem("dados", dadosParaStorage)
             },
@@ -52,7 +74,7 @@ const sistemaSlice = createSlice(
                     const data = c
                     
                     if (!labels.includes(data)) labels.push(data)
-                        
+
                     state.historico[c].forEach(element => {
                         if(element.receita_desp === "receita") {
                             if(!receita[data]){
@@ -73,16 +95,12 @@ const sistemaSlice = createSlice(
                     
 
                 }
-                const labelsSort = labels.sort((a, b) => a.localeCompare(b)).slice(0, 5)
- 
-                const receitaObj = Object.values(receita)
-                const receitaArr = receitaObj.slice(0, 5)
-                
-                const despesaObj = Object.values(despesa)
-                const despesaArr = despesaObj.slice(0, 5)
-
-                state.despesa = despesaArr
-                state.receita = receitaArr
+                const labelsSort = labels.sort((a, b) => a.localeCompare(b))
+                // const receitaObj = Object.values(receita)
+                // const despesaObj = Object.values(despesa)
+            
+                state.despesa = despesa
+                state.receita = receita
                 state.labels = labelsSort
                 state.receitaTotal = receitaValorTotal
                 
@@ -131,7 +149,6 @@ const sistemaSlice = createSlice(
 
                 state.dados = novosDados
                 localStorage.removeItem("dados")
-
                 const dadosParaStorage = JSON.stringify(novosDados)
                 localStorage.setItem("dados", dadosParaStorage)
 

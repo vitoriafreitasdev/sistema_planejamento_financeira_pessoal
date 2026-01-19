@@ -40,10 +40,104 @@ const teste = {
       valor: 244,
       descricao: "descricao3",
       data: "2025-03-01"
-    }
-  ],
+    },
+    ],
+  "2025-04-01": [
+    {
+      categoria: "4",
+      receita_desp: "5",
+      valor: 244,
+      descricao: "descricao3",
+      data: "2025-03-01"
+    },
+    ],
+  "2025-05-01": [
+    {
+      categoria: "4",
+      receita_desp: "5",
+      valor: 244,
+      descricao: "descricao3",
+      data: "2025-03-01"
+    },
+    ],
+  "2025-06-01": [
+    {
+      categoria: "4",
+      receita_desp: "5",
+      valor: 244,
+      descricao: "descricao3",
+      data: "2025-03-01"
+    },
+    ],
+  "2025-07-01": [
+    {
+      categoria: "4",
+      receita_desp: "5",
+      valor: 244,
+      descricao: "descricao3",
+      data: "2025-03-01"
+    },
+    ],
+  "2025-08-01": [
+    {
+      categoria: "4",
+      receita_desp: "5",
+      valor: 244,
+      descricao: "descricao3",
+      data: "2025-03-01"
+    },
+    ],
+  "2025-09-01": [
+    {
+      categoria: "4",
+      receita_desp: "5",
+      valor: 244,
+      descricao: "descricao3",
+      data: "2025-03-01"
+    },
+    ],
+  "2025-10-01": [
+    {
+      categoria: "4",
+      receita_desp: "5",
+      valor: 244,
+      descricao: "descricao3",
+      data: "2025-03-01"
+    },
+    ],
+  "2025-11-01": [
+    {
+      categoria: "4",
+      receita_desp: "5",
+      valor: 244,
+      descricao: "descricao3",
+      data: "2025-03-01"
+    },
+    ]
+    ,
+  "2025-12-01": [
+    {
+      categoria: "4",
+      receita_desp: "5",
+      valor: 244,
+      descricao: "descricao3",
+      data: "2025-03-01"
+    },
+    ]
+    
 }
 
+const tam = Object.keys(teste).length
+const newKeys = Object.keys(teste).slice(6, 12)
+
+
+const filteredObject = Object.fromEntries(
+  Object.entries(teste).filter(([key, value]) => {
+    return newKeys.includes(key);
+  })
+);
+
+console.log(filteredObject)
 
 // for(chave in teste){
 //  teste[chave].forEach((element) => {
@@ -54,7 +148,7 @@ const teste = {
 
 const arr = ["2025-01-10", "2025-02-02", "2025-01-04"]
 arr.sort((a, b) => a.localeCompare(b))
-console.log(arr)
+//console.log(arr)
 
 
 
