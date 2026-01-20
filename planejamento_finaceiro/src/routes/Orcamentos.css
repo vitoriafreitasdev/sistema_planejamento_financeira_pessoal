@@ -1,0 +1,52 @@
+.main-orcamentos-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1.5rem;
+}
+
+.adicionar-orcamento-div{
+    width: 88%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #c7c7c7;
+    padding: 1.5rem;
+    border-radius: 16px;
+}
+
+.mensagem-orcamento{
+    margin-bottom: 5px;
+    color: #9b9b9b;
+}
+
+.adicionar-orcamento-div h3{
+    margin-bottom: 10px;
+}
+
+.adicionar-orcamento-div .subtitulo{
+    margin-bottom: 1.5rem;
+}
+
+.p-info-orcamento{
+    font-weight: bolder;
+    margin-bottom: 10px;
+}
+
+.orcamentos-select, .orcamento-input{
+    margin-bottom: 10px;
+    padding: 0.6rem;
+    background-color: #e2e2e2;
+    cursor: pointer;
+    border: none;
+    border-radius: 15px;
+}
+
+.orcamento-button{
+    border-radius: 15px;
+    padding: 0.6rem;
+    margin-top: 10px;
+    background-color: black;
+    color: #fff;
+    font-weight: bolder;
+    cursor: pointer;
+}

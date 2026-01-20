@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const localSave = localStorage.getItem("historico")
 const dadosSave = localStorage.getItem("dados")
+const orcamentoSave = localStorage.getItem("orcamentos")
 
 const estadoInicial = { 
     historico: localSave ? JSON.parse(localSave) : {}, // var para os graficos
@@ -12,7 +13,8 @@ const estadoInicial = {
     labels: [],
     totalDeDespesas: 0,
     receitaTotal: 0,
-    categoriaDeDespesas: []
+    categoriaDeDespesas: {},
+    orcamentos: orcamentoSave ? JSON.parse(orcamentoSave) : {}
 }
 
 const sistemaSlice = createSlice(
@@ -22,7 +24,7 @@ const sistemaSlice = createSlice(
         reducers: {
             passarTransacao: (state, action) => {
                 const historicoSalvo = JSON.parse(localSave)
-                // fazer mais testes para ve se tudo  esta funcional 
+                
                 if(historicoSalvo){
                     const historicoTam = Object.keys(JSON.parse(localSave)).length
                     console.log("Tamanho do historico: ", historicoTam)
@@ -58,7 +60,9 @@ const sistemaSlice = createSlice(
                 const objeto = JSON.stringify(state.historico)
 
                 localStorage.removeItem("historico")
+                // para os dados do grafico do dashboard e outros reducers
                 localStorage.setItem("historico", objeto)
+                // para os dados utilizados para o componente Historico
                 localStorage.setItem("dados", dadosParaStorage)
             },
             dadosReceitaDesp: (state) => {
@@ -151,12 +155,22 @@ const sistemaSlice = createSlice(
                 localStorage.removeItem("dados")
                 const dadosParaStorage = JSON.stringify(novosDados)
                 localStorage.setItem("dados", dadosParaStorage)
-
+            },
+            addOrcamento: (state, action) => {
+                const cat = action.payload.categoria
+                const orc = action.payload.orcamento
+                if(!state.orcamentos[cat]){
+                    state.orcamentos[cat] = 0
+                }
+                state.orcamentos[cat] = orc
                 
+                const objLocalStorage = JSON.stringify(state.orcamentos)
+                localStorage.setItem("orcamentos", objLocalStorage)
+
             }
         }
     }
 )
 
-export const {passarTransacao, dadosReceitaDesp, dadosDespCategoria, excluirDados} = sistemaSlice.actions
+export const {passarTransacao, dadosReceitaDesp, dadosDespCategoria, excluirDados, addOrcamento} = sistemaSlice.actions
 export default sistemaSlice.reducer

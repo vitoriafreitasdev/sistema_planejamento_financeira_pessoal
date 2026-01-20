@@ -12,6 +12,7 @@ import {store} from './redux/store.js'
 import Dashboard from './routes/Dashboard.jsx'
 import Transacoes from './routes/Transacoes.jsx'
 import Historico from './routes/Historico.jsx'
+import Orcamentos from './routes/Orcamentos.jsx'
 
 const router = createBrowserRouter(
   [
@@ -35,6 +36,10 @@ const router = createBrowserRouter(
       {
         path: "/historico",
         element: <Historico/>
+      },
+      {
+        path: "/orcamentos",
+        element: <Orcamentos/>
       }
     ]
    }

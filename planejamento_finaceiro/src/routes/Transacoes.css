@@ -43,12 +43,12 @@
 .infos-container select{
     width: 95%;
 }
-.infos-container input {
+.infos-container .input-transacoes {
     width: 93.5%;
 }
 
 
-.infos-container select, input {
+.infos-container select, .input-transacoes {
     margin: 7px 2rem;
     padding: 0.5rem;
     background-color: #e2e2e2;

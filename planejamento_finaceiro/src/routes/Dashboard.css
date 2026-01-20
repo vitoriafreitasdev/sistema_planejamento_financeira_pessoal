@@ -20,8 +20,8 @@
     font-weight: bolder;
 }
 
-.saldo, .economia{
-    color: black;
+.saldo{
+    color: green;
 }
 
 .receita {
@@ -36,10 +36,11 @@
 .p-info{
     margin-top: 0.5rem;
     color: #6d6d6d;
+
 }
 
 .saldo-info{
-    color: green;
+    color: #6d6d6d;
 }
 
 .container-graficos{

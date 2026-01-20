@@ -45,6 +45,10 @@ const Transacoes = () => {
     dispatch(passarTransacao(transacao))
     setMensagem("Transação adicionada com sucesso")
 
+    setTimeout(() => {
+      setMensagem("")
+    }, 2000)
+
   }
   return (
     <div className="transacoes-container">
@@ -76,11 +80,11 @@ const Transacoes = () => {
             </select>
           }
           <h3>Valor</h3>
-          <input type="number" onChange={(e) => setValor(e.target.value)}/>
+          <input className="input-transacoes" type="number" onChange={(e) => setValor(e.target.value)}/>
           <h3>Descrição</h3>
-          <input type="text" onChange={(e) => setDescricao(e.target.value)}/>
+          <input className="input-transacoes" type="text" onChange={(e) => setDescricao(e.target.value)}/>
           <h3>Data</h3>
-          <input type="date" onChange={(e) => setData(e.target.value)}/>
+          <input className="input-transacoes" type="date" onChange={(e) => setData(e.target.value)}/>
       </div>
     {despOuReceit === "despesa" ? <div className="buttons"><button onClick={adicionarTransacao}>+ Adicionar Despesa</button></div> : <div className="buttons"> <button  onClick={adicionarTransacao}>+ Adicionar Receita</button> </div>}
     </div>

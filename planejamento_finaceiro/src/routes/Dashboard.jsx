@@ -18,12 +18,7 @@ const Dashboard = () => {
                 <p className="p-num saldo">{receitaTotal}</p>
                 <p className="p-info saldo-info">Total de receita registrada</p>
             </div>
-            <div>
-                <h4>Receita</h4>
-                <p className="p-num receita"> </p>
-                <p className="p-info"> </p>
-
-            </div>
+           
             <div>
                 <h4>Despesas</h4>
                 <p className="p-num despesa">{totalDespesas}</p>
