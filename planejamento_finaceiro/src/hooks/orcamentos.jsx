@@ -1,4 +1,4 @@
-
+// tentar fazer isso so que contando mensamente em vez do total de gastos, mudar no slice da categoria de gastos, adicionar a data, alem do valor e porcentagem
 
 export default function dadosOrcamento(orcamentos, categorias){
     
