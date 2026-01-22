@@ -136,8 +136,8 @@ const filteredObject = Object.fromEntries(
     return newKeys.includes(key);
   })
 );
-
-console.log(filteredObject)
+console.log(teste["2025-01-01"][0].categoria)
+// console.log(filteredObject)
 
 // for(chave in teste){
 //  teste[chave].forEach((element) => {
