@@ -1,28 +1,18 @@
 /* eslint-disable no-unused-vars */
 import "./Orcamentos.css"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { addOrcamento, dadosDespCategoria } from "../redux/slices/sistemaSlice"
 import dadosOrcamento from "../hooks/orcamentos"
+
 const Orcamentos = () => {
+
+  const historico = useSelector((state) => state.sistema.historico)
+  const orcamentosSalvos = useSelector((state) => state.sistema.orcamentos)
+    
   const dispatch = useDispatch()
 
-  const orcamentosSalvos = useSelector((state) => state.sistema.orcamentos)
-  const categoriaSalvas = useSelector((state) => state.sistema.categoriaDeDespesas)
-
   const orcamentosQuantidade = Object.keys(orcamentosSalvos).length
-
-  const arrOrcamentos = [orcamentosSalvos]
-  const arrCategorias  = [categoriaSalvas]
-
-  useEffect(() => {
-    dispatch(dadosDespCategoria())
-    
-  }, [])
-
-
-  const valores = dadosOrcamento(orcamentosSalvos, categoriaSalvas)
-  console.log(valores)
 
   const [categoria, setCategoria] = useState("")
   const [orcamentoNum, setOrcamentoNum] = useState("")
@@ -41,9 +31,12 @@ const Orcamentos = () => {
     }, 2000)
   }
 
+  const valores = dadosOrcamento(orcamentosSalvos, historico)
+
   return (
     <div className="main-orcamentos-container">
         <div className="adicionar-orcamento-div"> 
+            
             {mensagem && <p className="mensagem-orcamento">{mensagem}</p>}
             <h3>Adicionar Orçamento</h3>
             <p className="subtitulo">Definina limites gastos por categoria</p>
@@ -55,25 +48,51 @@ const Orcamentos = () => {
               <option value="moradia">Moradia</option>
               <option value="Lazer">Lazer</option>
             </select> 
-            <p className="p-info-orcamento">Limite Anual (R$)</p>
+            <p className="p-info-orcamento">Limite Mensal (R$)</p>
             <input className="orcamento-input" type="number" placeholder="0,00" onChange={(e) =>setOrcamentoNum(e.target.value)}/>
             <button className="orcamento-button" onClick={adicionarOrcamento}>+ Adicionar Orçamento</button>
         </div>
-        {/* Para dados aqui fazer um array que vai subtrair o valor de cada categoria do orcamento com o que ta na categoria de despesas*/}
+       
         <div className="orcamentos-ativos-div">
-          {/* <h3>Orçamentos Ativos</h3>
-          <p>{orcamentosQuantidade} categorias com orçamento definido</p>
-          {arrOrcamentos.map((d) => (
-            <div>
-              {d.alimentacao && <p>Alimentação: {d.alimentacao}</p>}
-              {d.moradia && <p>Moradia: {d.moradia}</p>}
-              {d.Lazer && <p>Lazer: {d.Lazer}</p>}
-              {d.transporte && <p>Transporte: {d.transporte}</p>}
-              {d.outro && <p>Outro: {d.outro}</p>}
+          <div>
+            {valores.moradia && 
+            <label>
+              <span>{valores.moradia.valor}</span>
+              <input type="range" value={valores.moradia.valor} max={orcamentosSalvos.moradia}/>
+              <span>{orcamentosSalvos.moradia}</span>
+            </label>
+            }
+          </div>
 
-            </div>
-          ))}
-           */}
+          <div>
+            {valores.transporte && 
+            <label>
+              <span>{valores.transporte.valor}</span>
+              <input type="range" value={valores.transporte.valor} max={orcamentosSalvos.transporte}/>
+              <span>{orcamentosSalvos.transporte}</span>
+            </label>
+            }
+
+          </div>
+
+          <div>
+            {valores.alimentacao && 
+            <label>
+              <span>{valores.alimentacao.valor}</span>
+              <input type="range" value={valores.alimentacao.valor} max={orcamentosSalvos.alimentacao}/>
+              <span>{orcamentosSalvos.alimentacao}</span>
+            </label>}
+          </div>
+          
+          <div>
+            {valores.Lazer && 
+            <label>
+              <span>{valores.Lazer.valor}</span>
+              <input type="range" value={valores.Lazer.valor} max={orcamentosSalvos.Lazer}/>
+              <span>{orcamentosSalvos.Lazer}</span>
+            </label>}
+          </div>
+            
         </div>
     </div>
   )

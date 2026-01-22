@@ -12,7 +12,6 @@ const Historico = () => {
     const dispatch = useDispatch()
     const [total, setTotal] = useState(0)
 
-        
     
     useEffect(() => {
         let valores = 0

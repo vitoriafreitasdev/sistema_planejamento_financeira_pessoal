@@ -27,7 +27,6 @@ const sistemaSlice = createSlice(
                 
                 if(historicoSalvo){
                     const historicoTam = Object.keys(JSON.parse(localSave)).length
-                    console.log("Tamanho do historico: ", historicoTam)
 
                     if(historicoTam >= 12){
                         const newKeys = Object.keys(historicoSalvo).slice(5, 12)
@@ -37,8 +36,6 @@ const sistemaSlice = createSlice(
                         })
                         );
                         state.historico = filteredObject
-                        console.log("Objeto filtrado: ")
-                        console.log(filteredObject)
                         localStorage.removeItem("historico")
                         localStorage.setItem("historico", filteredObject)
                     }
