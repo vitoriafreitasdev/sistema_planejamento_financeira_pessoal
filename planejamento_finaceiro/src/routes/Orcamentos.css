@@ -1,4 +1,4 @@
-.main-orcamentos-container{
+.orcamentos-container{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -49,4 +49,54 @@
     color: #fff;
     font-weight: bolder;
     cursor: pointer;
+}
+
+/* */
+
+.orcamentos-ativos-div{
+    margin-top: 1rem;
+    border: 1px solid #c7c7c7;
+    padding: 1rem;
+    width: 89%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 16px;
+
+}
+
+.span-div{
+    display: flex;
+    justify-content: space-between;
+}
+
+.input-range {
+    width: 100%;
+    accent-color: black;
+}
+
+.input-range::-webkit-slider-thumb {
+   -webkit-appearance: none; /* Remove a aparência padrão no Chrome/Safari/Edge */
+    appearance: none;
+    visibility: hidden;      /* Esconde a bolinha */
+    width: 0;                /* Remove o espaço ocupado por ela */
+    height: 0;
+}
+
+.input-range::-moz-range-thumb {
+    visibility: hidden;      /* Esconde a bolinha no Firefox */
+    width: 0;
+    height: 0;
+}
+
+.orcamento-div2{
+    display: flex;
+    justify-content: space-between;
+}
+
+.orcamento-container{
+    border: 1px solid #c7c7c7;
+    padding: 1rem;
+    margin: 15px 0;
+    border-radius: 16px;
+    
 }

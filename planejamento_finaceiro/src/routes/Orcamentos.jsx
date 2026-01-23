@@ -34,9 +34,10 @@ const Orcamentos = () => {
   const valores = dadosOrcamento(orcamentosSalvos, historico)
 
   return (
-    <div className="main-orcamentos-container">
+    <div className="orcamentos-container">
+        
         <div className="adicionar-orcamento-div"> 
-            
+          
             {mensagem && <p className="mensagem-orcamento">{mensagem}</p>}
             <h3>Adicionar Orçamento</h3>
             <p className="subtitulo">Definina limites gastos por categoria</p>
@@ -53,50 +54,84 @@ const Orcamentos = () => {
             <button className="orcamento-button" onClick={adicionarOrcamento}>+ Adicionar Orçamento</button>
         </div>
        
+       
         <div className="orcamentos-ativos-div">
           <h3>Valor gasto no mes mais recente x Orçamento mensal</h3>
-          <div>
-            {valores.moradia && 
-            <label>
-              <h4>Moradia</h4>
-              <span>{valores.moradia.valor}</span>
-              <input type="range" value={valores.moradia.valor} max={orcamentosSalvos.moradia}/>
-              <span>{orcamentosSalvos.moradia}</span>
-            </label>
-            }
-          </div>
-
-          <div>
-            {valores.transporte && 
-            <label>
-              <h4>Transporte</h4>
-              <span>{valores.transporte.valor}</span>
-              <input type="range" value={valores.transporte.valor} max={orcamentosSalvos.transporte}/>
-              <span>{orcamentosSalvos.transporte}</span>
-            </label>
-            }
-
-          </div>
-
-          <div>
-            {valores.alimentacao && 
-            <label>
-              <h4>Alimentação</h4>
-              <span>{valores.alimentacao.valor}</span>
-              <input type="range" value={valores.alimentacao.valor} max={orcamentosSalvos.alimentacao}/>
-              <span>{orcamentosSalvos.alimentacao}</span>
-            </label>}
-          </div>
           
-          <div>
-            {valores.Lazer && 
-            <label>
-              <h4>Lazer</h4>
-              <span>{valores.Lazer.valor}</span>
-              <input type="range" value={valores.Lazer.valor} max={orcamentosSalvos.Lazer}/>
-              <span>{orcamentosSalvos.Lazer}</span>
-            </label>}
+          {valores.moradia && 
+          <div className="orcamento-container">
+            <h4>Moradia</h4>
+            <div className="orcamento-div1">
+              <div className="span-div">
+                <span>R$ {valores.moradia.valor}</span> 
+                <span>de R${orcamentosSalvos.moradia}</span>
+              </div>
+              <input className="input-range" type="range" value={valores.moradia.valor} max={orcamentosSalvos.moradia}/>
+            </div>
+
+            <div className="orcamento-div2">
+              <p>{valores.moradia.porcentagem}% utilizado</p>
+              <p>R${valores.moradia.restante} disponível</p>
+            </div>
           </div>
+          }
+          
+          {valores.transporte && 
+          <div className="orcamento-container">
+            <h4>Transporte</h4>
+            <div className="orcamento-div1">
+              
+              <div className="span-div">
+                <span>R${valores.transporte.valor}</span> 
+                <span>de R${orcamentosSalvos.transporte}</span>
+              </div>
+
+              <input className="input-range" type="range" value={valores.transporte.valor} max={orcamentosSalvos.transporte}/>
+              
+            </div>
+
+            <div className="orcamento-div2">
+              <p>{valores.transporte.porcentagem}% utilizado</p>
+              <p>R${valores.transporte.restante} disponível</p>
+            </div>
+          </div>
+          }
+        
+          {valores.alimentacao && 
+          <div className="orcamento-container">
+            <h4>Alimentacao</h4>
+            <div className="orcamento-div1">
+              <div className="span-div">
+                <span>R${valores.alimentacao.valor}</span> 
+                <span>de R${orcamentosSalvos.alimentacao}</span>
+              </div>
+              <input className="input-range" type="range" value={valores.alimentacao.valor} max={orcamentosSalvos.alimentacao}/>
+              
+            </div>
+
+            <div className="orcamento-div2">
+              <p>{valores.alimentacao.porcentagem}% utilizado</p>
+              <p>R${valores.alimentacao.restante} disponível</p>
+            </div>
+          </div>}
+      
+          {valores.Lazer && 
+          <div className="orcamento-container">
+            <h4>Lazer</h4>
+            <div className="orcamento-div1">
+              <div className="span-div">
+                <span>R${valores.Lazer.valor}</span> 
+                <span>de R${orcamentosSalvos.Lazer}</span>
+              </div>
+              <input className="input-range" type="range" value={valores.Lazer.valor} max={orcamentosSalvos.Lazer}/>
+            </div>
+
+            <div className="orcamento-div2">
+              <p>{valores.Lazer.porcentagem}% utilizado</p>
+              <p>R${valores.Lazer.restante} disponível</p>
+            </div>
+          </div>}
+    
             
         </div>
     </div>

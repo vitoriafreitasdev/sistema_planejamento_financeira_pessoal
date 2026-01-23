@@ -63,8 +63,6 @@ export default function dadosOrcamento(orcamentos, categorias){
 
     }
 
-    console.log(obj)
-
     return obj
 
 }
