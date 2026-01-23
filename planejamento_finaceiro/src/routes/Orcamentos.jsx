@@ -54,9 +54,11 @@ const Orcamentos = () => {
         </div>
        
         <div className="orcamentos-ativos-div">
+          <h3>Valor gasto no mes mais recente x Orçamento mensal</h3>
           <div>
             {valores.moradia && 
             <label>
+              <h4>Moradia</h4>
               <span>{valores.moradia.valor}</span>
               <input type="range" value={valores.moradia.valor} max={orcamentosSalvos.moradia}/>
               <span>{orcamentosSalvos.moradia}</span>
@@ -67,6 +69,7 @@ const Orcamentos = () => {
           <div>
             {valores.transporte && 
             <label>
+              <h4>Transporte</h4>
               <span>{valores.transporte.valor}</span>
               <input type="range" value={valores.transporte.valor} max={orcamentosSalvos.transporte}/>
               <span>{orcamentosSalvos.transporte}</span>
@@ -78,6 +81,7 @@ const Orcamentos = () => {
           <div>
             {valores.alimentacao && 
             <label>
+              <h4>Alimentação</h4>
               <span>{valores.alimentacao.valor}</span>
               <input type="range" value={valores.alimentacao.valor} max={orcamentosSalvos.alimentacao}/>
               <span>{orcamentosSalvos.alimentacao}</span>
@@ -87,6 +91,7 @@ const Orcamentos = () => {
           <div>
             {valores.Lazer && 
             <label>
+              <h4>Lazer</h4>
               <span>{valores.Lazer.valor}</span>
               <input type="range" value={valores.Lazer.valor} max={orcamentosSalvos.Lazer}/>
               <span>{orcamentosSalvos.Lazer}</span>
