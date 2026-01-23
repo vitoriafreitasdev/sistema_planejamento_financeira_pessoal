@@ -15,7 +15,6 @@ export default function dadosOrcamento(orcamentos, categorias){
                     else {
                         const mesObj = obj[element.categoria].data.split("-")[1]
                         const mesHist = element.data.split("-")[1]
-
                         if(mesHist == mesObj) 
                         {
                             const valor = parseFloat(element.valor) + parseFloat(obj[element.categoria].valor)
@@ -23,11 +22,12 @@ export default function dadosOrcamento(orcamentos, categorias){
                         }
                         else if(mesHist < mesObj){
                             // se for menor o valor nao muda
-                            obj[element.categora] =  {valor: obj[element.categoria].valor, data: element.data}
+                            obj[element.categoria] =  {valor: obj[element.categoria].valor, data: element.data}
                         }
                         else{
                             obj[element.categoria] = {valor: element.valor, data: element.data}
                         }
+
                     }
                 }
             })
@@ -40,24 +40,30 @@ export default function dadosOrcamento(orcamentos, categorias){
         
         for (const o in obj){
             let porcent
+            let restante
             if (o === "moradia") {
                 porcent = Math.floor((parseFloat(obj[o].valor) / orcamentos.moradia ) * 100) 
+                restante = Math.floor(orcamentos.moradia - parseFloat(obj[o].valor)) 
+
             }
             if (o === "transporte") {
                 porcent = Math.floor((parseFloat(obj[o].valor) / orcamentos.transporte ) * 100) 
+                restante = Math.floor(orcamentos.transporte - parseFloat(obj[o].valor)) 
             }
             if (o === "alimentacao") {
                 porcent = Math.floor((parseFloat(obj[o].valor) / orcamentos.alimentacao ) * 100) 
-            }
+                restante = Math.floor(orcamentos.alimentacao - parseFloat(obj[o].valor))             }
             if (o === "Lazer") {
                 porcent = Math.floor((parseFloat(obj[o].valor) / orcamentos.Lazer ) * 100) 
+                restante = Math.floor(orcamentos.Lazer - parseFloat(obj[o].valor)) 
             }
 
-            obj[o] = {valor: obj[o].valor, data: obj[o].data, porcentagem: porcent }
+            obj[o] = {valor: obj[o].valor, data: obj[o].data, porcentagem: porcent, restante: restante }
         }
 
     }
 
+    console.log(obj)
 
     return obj
 
