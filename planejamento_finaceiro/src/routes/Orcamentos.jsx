@@ -5,6 +5,9 @@ import { useDispatch, useSelector } from "react-redux"
 import { addOrcamento, dadosDespCategoria } from "../redux/slices/sistemaSlice"
 import dadosOrcamento from "../hooks/orcamentos"
 
+import lixeiraicon from "../images/lixeiraicon.png"
+import lix from "../images/lix.png"
+
 const Orcamentos = () => {
 
   const historico = useSelector((state) => state.sistema.historico)
@@ -59,7 +62,12 @@ const Orcamentos = () => {
           
           {orcamentosSalvos.moradia && 
           <div className="orcamento-container">
-            <h4>Moradia</h4>
+            
+            <div className="h4-img-div">
+              <h4>Moradia</h4>
+              <img className="lixeira-img" src={lix} alt="lixeira-icon" />
+            </div>
+
             <div className="orcamento-div1">
               <div className="span-div">
                 <span className="span-valor">R$ {valores.moradia ? valores.moradia.valor : 0}</span> 
@@ -69,7 +77,7 @@ const Orcamentos = () => {
             </div>
 
             <div className="orcamento-div2">
-              <p >{valores.moradia ? valores.moradia.porcentagem : 0}% utilizado</p>
+              <p className="p-porcentagem">{valores.moradia ? valores.moradia.porcentagem : 0}% utilizado</p>
               <p className="p-valor">R$ {valores.moradia ? valores.moradia.restante : orcamentosSalvos.moradia} disponível</p>
             </div>
           </div>
@@ -77,7 +85,12 @@ const Orcamentos = () => {
           
           {orcamentosSalvos.transporte && 
           <div className="orcamento-container">
-            <h4>Transporte</h4>
+
+            <div className="h4-img-div">
+              <h4>Transporte</h4>
+              <img className="lixeira-img" src={lix} alt="lixeira-icon" />
+            </div>
+
             <div className="orcamento-div1">
               
               <div className="span-div">
@@ -90,7 +103,7 @@ const Orcamentos = () => {
             </div>
 
             <div className="orcamento-div2">
-              <p >{valores.transporte ? orcamentosSalvos.porcentagem : 0}% utilizado</p>
+              <p className="p-porcentagem">{valores.transporte ? orcamentosSalvos.porcentagem : 0}% utilizado</p>
               <p className="p-valor">R$ {valores.transporte ? orcamentosSalvos.restante : orcamentosSalvos.transporte} disponível</p>
             </div>
           </div>
@@ -98,7 +111,12 @@ const Orcamentos = () => {
         
           {orcamentosSalvos.alimentacao && 
           <div className="orcamento-container">
-            <h4>Alimentacao</h4>
+            
+            <div className="h4-img-div">
+              <h4>Alimentacao</h4>
+              <img className="lixeira-img" src={lix} alt="lixeira-icon" />
+            </div>
+
             <div className="orcamento-div1">
               <div className="span-div">
                 <span className="span-valor">R$ {valores.alimentacao ? valores.alimentacao.valor : 0}</span> 
@@ -108,14 +126,19 @@ const Orcamentos = () => {
             </div>
 
             <div className="orcamento-div2">
-              <p >{valores.alimentacao ? valores.alimentacao.porcentagem : 0}% utilizado</p>
+              <p className="p-porcentagem">{valores.alimentacao ? valores.alimentacao.porcentagem : 0}% utilizado</p>
               <p className="p-valor">R$ {valores.alimentacao ? valores.alimentacao.restante : orcamentosSalvos.alimentacao} disponível</p>
             </div>
           </div>}
       
           {orcamentosSalvos.Lazer && 
           <div className="orcamento-container">
-            <h4>Lazer</h4>
+            
+            <div className="h4-img-div">
+              <h4>Lazer</h4>
+              <img className="lixeira-img" src={lix} alt="lixeira-icon" />
+            </div>
+
             <div className="orcamento-div1">
               <div className="span-div">
                 <span className="span-valor">R$ {valores.Lazer ? valores.Lazer.valor : 0}</span> 
@@ -125,7 +148,7 @@ const Orcamentos = () => {
             </div>
 
             <div className="orcamento-div2">
-              <p>{valores.Lazer ? valores.Lazer.porcentagem : 0}% utilizado</p>
+              <p className="p-porcentagem">{valores.Lazer ? valores.Lazer.porcentagem : 0}% utilizado</p>
               <p className="p-valor">R$ {valores.Lazer ? valores.Lazer.restante : orcamentosSalvos.Lazer} disponível</p>
             </div>
           </div>}

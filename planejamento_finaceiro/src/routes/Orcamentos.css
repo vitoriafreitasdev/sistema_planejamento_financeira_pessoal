@@ -113,7 +113,22 @@
     margin: 10px 0 13px 0;
 }
 
-.orcamento-container span, p {
+.orcamento-container span, p, img {
     margin: 7px 0;
 }
 
+.h4-img-div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.lixeira-img{
+    width: 23px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.p-porcentagem {
+    color: #858585;
+
+}
