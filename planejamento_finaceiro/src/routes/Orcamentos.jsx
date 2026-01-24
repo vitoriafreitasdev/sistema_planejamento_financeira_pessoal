@@ -94,7 +94,7 @@ const Orcamentos = () => {
             <div className="orcamento-div1">
               
               <div className="span-div">
-                <span className="span-valor">R$ {valores.transporte ? orcamentosSalvos.valor : 0}</span> 
+                <span className="span-valor">R$ {valores.transporte ? valores.transporte.valor: 0}</span> 
                 <span className="span-valor-orcamento">de R${orcamentosSalvos.transporte}</span>
               </div>
 
@@ -103,8 +103,8 @@ const Orcamentos = () => {
             </div>
 
             <div className="orcamento-div2">
-              <p className="p-porcentagem">{valores.transporte ? orcamentosSalvos.porcentagem : 0}% utilizado</p>
-              <p className="p-valor">R$ {valores.transporte ? orcamentosSalvos.restante : orcamentosSalvos.transporte} disponível</p>
+              <p className="p-porcentagem">{valores.transporte ? valores.transporte.porcentagem : 0}% utilizado</p>
+              <p className="p-valor">R$ {valores.transporte ? valores.transporte.restante : orcamentosSalvos.transporte} disponível</p>
             </div>
           </div>
           }
