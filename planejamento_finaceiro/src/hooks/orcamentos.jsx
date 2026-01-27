@@ -15,7 +15,11 @@ export default function dadosOrcamento(orcamentos, categorias){
                     else {
                         const mesObj = obj[element.categoria].data.split("-")[1]
                         const mesHist = element.data.split("-")[1]
-                        if(mesHist == mesObj) 
+
+                        const anoObj = obj[element.categoria].data.split("-")[0]
+                        const anoHist = element.data.split("-")[0]
+
+                        if(mesHist == mesObj && anoHist == anoObj) 
                         {
                             const valor = parseFloat(element.valor) + parseFloat(obj[element.categoria].valor)
                             obj[element.categoria] =  {valor: valor, data: element.data}
