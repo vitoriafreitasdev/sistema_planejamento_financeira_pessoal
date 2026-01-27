@@ -164,10 +164,19 @@ const sistemaSlice = createSlice(
                 const objLocalStorage = JSON.stringify(state.orcamentos)
                 localStorage.setItem("orcamentos", objLocalStorage)
 
+            },
+            excluirOrcamento: (state, action) => {
+                const entries = Object.entries(state.orcamentos)
+                // fromEntries pega uma lista de chave e valores e transforma em um objeto
+                const filter = Object.fromEntries(entries.filter((chave) => !chave.includes(action.payload)))
+
+                state.orcamentos = filter 
+                localStorage.setItem("orcamentos", JSON.stringify(filter))
+
             }
         }
     }
 )
 
-export const {passarTransacao, dadosReceitaDesp, dadosDespCategoria, excluirDados, addOrcamento} = sistemaSlice.actions
+export const {passarTransacao, dadosReceitaDesp, dadosDespCategoria, excluirDados, addOrcamento, excluirOrcamento} = sistemaSlice.actions
 export default sistemaSlice.reducer

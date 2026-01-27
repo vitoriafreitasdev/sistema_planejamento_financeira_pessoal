@@ -1,13 +1,22 @@
 
+import { useDispatch } from "react-redux"
 import lix from "../images/lix.png"
+import { excluirOrcamento } from "../redux/slices/sistemaSlice"
 
-const OrcamentosContainer = ({nome ,valor, valorSalvo, porcentagem, restante}) => {
+const OrcamentosContainer = ({nome, p, valor, valorSalvo, porcentagem, restante}) => {
+
+  const dispatch = useDispatch()
+
+  const exclusao = (item) => {
+    dispatch(excluirOrcamento(item))
+  }
+
   return (
     <div className="orcamento-container">
                 
             <div className="h4-img-div">
-            <h4>{nome}</h4>
-            <img className="lixeira-img" src={lix} alt="lixeira-icon" />
+            <h4>{p}</h4>
+             <img className="lixeira-img" src={lix} alt="lixeira-icon" onClick={() => exclusao(nome)}/>
             </div>
 
             <div className="orcamento-div1">
