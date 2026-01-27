@@ -7,21 +7,27 @@ import OrcamentRealiz from "../graficos/OrcamentRealiz.jsx"
 
 import Dados from "../hooks/graficosDados.jsx"
 const Dashboard = () => {
-  const {grafficValores, despesasCategorias, totalDespesas, receitaTotal} = Dados()
+  const {grafficValores, despesasCategorias, totalDespesas, receitaTotal, saldoTotal} = Dados()
 
 
   return (
     <div className='dashboard-main-container'>
         <div className='container-info'>
             <div>
-                <h4>Receita Atual</h4>
-                <p className="p-num saldo">{receitaTotal}</p>
+                <h4>Saldo Total</h4>
+                <p className="p-num">R$ {saldoTotal}</p>
+                <p className={`p-info ${saldoTotal > 0 ? "saldo-positivo" : "saldo-negativo"}`}>{saldoTotal > 0 ? "Saldo positivo" : "Saldo negativo"}</p>
+            </div>
+
+            <div>
+                <h4>Receita Total</h4>
+                <p className="p-num saldo">R$ {receitaTotal}</p>
                 <p className="p-info saldo-info">Total de receita registrada</p>
             </div>
            
             <div>
                 <h4>Despesas</h4>
-                <p className="p-num despesa">{totalDespesas}</p>
+                <p className="p-num despesa">R$ {totalDespesas}</p>
                 <p className="p-info">Total de despesas registrada</p>
             </div>
             <div>

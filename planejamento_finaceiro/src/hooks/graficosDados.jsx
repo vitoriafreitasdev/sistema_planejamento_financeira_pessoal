@@ -14,6 +14,7 @@ export default function  Dados(){
     const receitaTotal = useSelector((state) => state.sistema.receitaTotal)
     const categorias = useSelector((state) => state.sistema.categoriaDeDespesas)
 
+    const saldoTotal = Math.floor(parseFloat(receitaTotal) - parseFloat(totalDespesas))
 
   
     const [grafficValores] = useState({
@@ -57,7 +58,7 @@ export default function  Dados(){
         ]
     })
 
-    return {grafficValores, despesasCategorias, totalDespesas, receitaTotal}
+    return {grafficValores, despesasCategorias, totalDespesas, receitaTotal, saldoTotal}
     
 }
 

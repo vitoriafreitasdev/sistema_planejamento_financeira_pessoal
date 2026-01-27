@@ -33,8 +33,6 @@ const Orcamentos = () => {
 
   const valores = dadosOrcamento(orcamentosSalvos, historico)
 
-  // fazer mais testes e depois fazer a logica de exclusão
-
   return (
     <div className="orcamentos-container">
         

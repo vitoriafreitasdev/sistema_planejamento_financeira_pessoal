@@ -87,7 +87,13 @@
     
 }
 
+.saldo-positivo{
+    color: green;
+}
 
+.saldo-negativo{
+    color: red;
+}
 @media (min-width:300px) and (max-width: 799px) {
     .container-info{
         flex-direction: column;
