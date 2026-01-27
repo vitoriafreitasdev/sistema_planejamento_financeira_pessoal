@@ -13,6 +13,7 @@ import Dashboard from './routes/Dashboard.jsx'
 import Transacoes from './routes/Transacoes.jsx'
 import Historico from './routes/Historico.jsx'
 import Orcamentos from './routes/Orcamentos.jsx'
+import Metas from './routes/Metas.jsx'
 
 const router = createBrowserRouter(
   [
@@ -40,6 +41,11 @@ const router = createBrowserRouter(
       {
         path: "/orcamentos",
         element: <Orcamentos/>
+      }
+      ,
+      {
+        path: "/metas",
+        element: <Metas/>
       }
     ]
    }

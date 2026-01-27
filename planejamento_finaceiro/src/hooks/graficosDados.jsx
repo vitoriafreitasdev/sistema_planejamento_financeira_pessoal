@@ -29,15 +29,15 @@ export default function  Dados(){
             {
                 label: "Receita",
                 data: receita,
-                backgroundColor: "#5ac9ab",
+                backgroundColor: "rgba(53, 209, 170, 0.45)",
                 borderColor: "green",
                 borderWidth: 2
             },
             {
                 label: "Despesa",
                 data: despesa,
-                backgroundColor: "rgba(255,99,132,0.4)",
-                borderColor: "rgba(255,99,132,1)",
+                backgroundColor: "rgba(243, 54, 95, 0.4)",
+                borderColor: "rgb(197, 2, 2)",
                 borderWidth: 2,
                 tension: 0.4
             }
@@ -52,10 +52,10 @@ export default function  Dados(){
                 label: "despesa por categoria",
                 data: Object.values(categorias).map((value) => value.porcentagem),
                 backgroundColor: [
-                "rgba(230, 8, 193, 0.65)",  
+                "rgba(19, 3, 161, 0.65)",  
                 "rgba(34, 54, 238, 0.77)",
                 "rgba(38, 148, 192, 0.56)",
-                "rgba(189, 21, 21, 0.78)"
+                "rgba(31, 200, 223, 0.78)"
                 ],
                 borderColor: "white",
                 borderWidth: 2
