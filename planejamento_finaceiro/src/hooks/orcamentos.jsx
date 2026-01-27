@@ -8,7 +8,7 @@ export default function dadosOrcamento(orcamentos, categorias){
         for (let data in categorias){
             categorias[data].forEach((element) => {
               
-                if(element.receita_desp === "despesa"){
+                if(element.receita_desp === "despesa" && orcamentos[element.categoria]){
                     if (!obj[element.categoria]) {
                         obj[element.categoria] = {valor: element.valor, data: element.data}
                     }
@@ -45,24 +45,29 @@ export default function dadosOrcamento(orcamentos, categorias){
         for (const o in obj){
             let porcent
             let restante
+            let orcamento
             if (o === "moradia") {
                 porcent = Math.floor((parseFloat(obj[o].valor) / orcamentos.moradia ) * 100) 
                 restante = Math.floor(orcamentos.moradia - parseFloat(obj[o].valor)) 
-
+                orcamento = orcamentos.moradia
             }
             if (o === "transporte") {
                 porcent = Math.floor((parseFloat(obj[o].valor) / orcamentos.transporte ) * 100) 
                 restante = Math.floor(orcamentos.transporte - parseFloat(obj[o].valor)) 
+                orcamento = orcamentos.transporte
             }
             if (o === "alimentacao") {
                 porcent = Math.floor((parseFloat(obj[o].valor) / orcamentos.alimentacao ) * 100) 
-                restante = Math.floor(orcamentos.alimentacao - parseFloat(obj[o].valor))             }
+                restante = Math.floor(orcamentos.alimentacao - parseFloat(obj[o].valor)) 
+                orcamento = orcamentos.alimentacao
+            }
             if (o === "Lazer") {
                 porcent = Math.floor((parseFloat(obj[o].valor) / orcamentos.Lazer ) * 100) 
                 restante = Math.floor(orcamentos.Lazer - parseFloat(obj[o].valor)) 
+                orcamento = orcamentos.Lazer
             }
 
-            obj[o] = {valor: obj[o].valor, data: obj[o].data, porcentagem: porcent, restante: restante }
+            obj[o] = {valor: obj[o].valor, data: obj[o].data, porcentagem: porcent, restante: restante, orcamento: orcamento }
         }
 
     }

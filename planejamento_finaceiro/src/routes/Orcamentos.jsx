@@ -59,19 +59,19 @@ const Orcamentos = () => {
           <h3>Valor gasto no mês mais recente x Orçamento mensal</h3>
           
           {orcamentosSalvos.moradia && 
-            <OrcamentosContainer nome={"moradia"} p={"Moradia"} valor={valores.moradia ?  valores.moradia.valor : 0} valorSalvo={orcamentosSalvos.moradia} porcentagem={valores.moradia ? valores.moradia.porcentagem : 0} restante={valores.moradia ? valores.moradia.restante : orcamentosSalvos.moradia}/>
+            <OrcamentosContainer nome={"moradia"} p={"Moradia"} valor={valores.moradia ?  valores.moradia.valor : 0} valorSalvo={orcamentosSalvos.moradia} porcentagem={valores.moradia ? valores.moradia.porcentagem : 0} restante={valores.moradia ? valores.moradia.restante : valores.orcamento}/>
           }
           
           {orcamentosSalvos.transporte && 
-            <OrcamentosContainer nome={"transporte"} p={"Transporte"} valor={valores.transporte ?  valores.transporte.valor : 0} valorSalvo={orcamentosSalvos.transporte} porcentagem={valores.transporte ? valores.transporte.porcentagem : 0} restante={valores.transporte ? valores.transporte.restante : orcamentosSalvos.transporte}/>
+            <OrcamentosContainer nome={"transporte"} p={"Transporte"} valor={valores.transporte ?  valores.transporte.valor : 0} valorSalvo={orcamentosSalvos.transporte} porcentagem={valores.transporte ? valores.transporte.porcentagem : 0} restante={valores.transporte ? valores.transporte.restante : valores.orcamento}/>
           }
 
           {orcamentosSalvos.alimentacao && 
-            <OrcamentosContainer nome={"alimentacao"} p={"Alimentação"} valor={valores.alimentacao ?  valores.alimentacao.valor : 0} valorSalvo={orcamentosSalvos.alimentacao} porcentagem={valores.alimentacao ? valores.alimentacao.porcentagem : 0} restante={valores.alimentacao ? valores.alimentacao.restante : orcamentosSalvos.alimentacao}/>
+            <OrcamentosContainer nome={"alimentacao"} p={"Alimentação"} valor={valores.alimentacao ?  valores.alimentacao.valor : 0} valorSalvo={orcamentosSalvos.alimentacao} porcentagem={valores.alimentacao ? valores.alimentacao.porcentagem : 0} restante={valores.alimentacao ? valores.alimentacao.restante : valores.orcamento}/>
           }
 
           {orcamentosSalvos.Lazer && 
-            <OrcamentosContainer nome={"Lazer"} p={"Lazer"} valor={valores.Lazer ?  valores.Lazer.valor : 0} valorSalvo={orcamentosSalvos.Lazer} porcentagem={valores.Lazer ? valores.Lazer.porcentagem : 0} restante={valores.Lazer ? valores.Lazer.restante : orcamentosSalvos.Lazer}/>
+            <OrcamentosContainer nome={"Lazer"} p={"Lazer"} valor={valores.Lazer ?  valores.Lazer.valor : 0} valorSalvo={orcamentosSalvos.Lazer} porcentagem={valores.Lazer ? valores.Lazer.porcentagem : 0} restante={valores.Lazer ? valores.Lazer.restante : valores.orcamento}/>
           }
             
         </div>

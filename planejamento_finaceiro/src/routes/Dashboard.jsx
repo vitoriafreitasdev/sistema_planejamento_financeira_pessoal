@@ -7,7 +7,7 @@ import OrcamentRealiz from "../graficos/OrcamentRealiz.jsx"
 
 import Dados from "../hooks/graficosDados.jsx"
 const Dashboard = () => {
-  const {grafficValores, despesasCategorias, totalDespesas, receitaTotal, saldoTotal} = Dados()
+  const {grafficValores, despesasCategorias, totalDespesas, receitaTotal, saldoTotal, orcamentoXrealizado} = Dados()
 
 
   return (
@@ -62,7 +62,7 @@ const Dashboard = () => {
                 <p>Compare seus limites com os seus gastos reais</p>
               </div>
               <div className="grafico-container">
-                  {/* <OrcamentRealiz chartData={realiz}/> */}
+                   <OrcamentRealiz chartData={orcamentoXrealizado}/> 
               </div>
             </div>
         </div>
