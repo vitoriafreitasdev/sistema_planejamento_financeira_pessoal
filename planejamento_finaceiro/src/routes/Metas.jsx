@@ -1,18 +1,45 @@
-import React from 'react'
-
+import { useState } from "react"
+import "./Metas.css"
+import {useDispatch, useSelector} from "react-redux"
+import { addMetas } from "../redux/slices/sistemaSlice"
 const Metas = () => {
+  const [meta, setMeta] = useState("")
+  const [valor, setValor] = useState(0)
+  const [data, setData] = useState("")
+
+  const dispatch = useDispatch()
+  const metas = useSelector((state) => state.sistema.metas)
+  const saldoAtual = useSelector((state) => state.sistema.saldoAtual)
+
+
+  const adicionarMeta = () => {
+    const objetoMeta = {
+      "meta": meta,
+      "valor": valor,
+      "data": data
+    }
+
+    dispatch(addMetas(objetoMeta))
+
+    
+  }
+
+  console.log(metas)
+  console.log(saldoAtual)
+
+  
   return (
     <div className="metas-container-principal">
       <div className="criacao-metas-container">
           <h3>Nova meta de economia</h3>
           <p>Defina objetivos financeiros e acompanhe seu progresso</p>
           <h4>Nome da meta</h4>
-          <input type="text" name="" id="" />
+          <input type="text" placeholder="Ex: Viagem, Emergência, Carro" onChange={(e) => setMeta(e.target.value)}/>
           <h4>Valor alvo (R$)</h4>
-          <input type="number" name="" id="" />
+          <input type="number" placeholder="0,00" onChange={(e) => setValor(e.target.value)}/>
           <h4>Prazo</h4>
-          <input type="date" name="" id="" />
-          <button>Adicionar Meta</button>
+          <input type="date" onChange={(e) => setData(e.target.value)}/>
+          <button onClick={adicionarMeta}>+ Adicionar Meta</button>
       </div>
 
       <div className="metas-ativas-conatiner">

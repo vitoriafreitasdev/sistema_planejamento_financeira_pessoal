@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { dadosDespCategoria, dadosReceitaDesp } from "../redux/slices/sistemaSlice"
+import { atualizarSaldo, dadosDespCategoria, dadosReceitaDesp } from "../redux/slices/sistemaSlice"
 import dadosOrcamento from "./orcamentos"
 export default function  Dados(){
     const dispatch = useDispatch()
@@ -16,6 +16,7 @@ export default function  Dados(){
     const categorias = useSelector((state) => state.sistema.categoriaDeDespesas)
 
     const saldoTotal = Math.floor(parseFloat(receitaTotal) - parseFloat(totalDespesas))
+    dispatch(atualizarSaldo(saldoTotal))
 
     // Para orcamento X realizado 
 

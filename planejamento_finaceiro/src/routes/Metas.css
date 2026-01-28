@@ -1,0 +1,42 @@
+.metas-container-principal{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.criacao-metas-container{
+    display: flex;
+    flex-direction: column;
+    width: 87.5%;
+    border: 1px solid #c7c7c7;
+    border-radius: 16px;
+    padding: 1rem;
+    margin: 2rem;
+}
+
+.criacao-metas-container p {
+    color: #6d6d6d;
+    margin-bottom: 1rem;
+}
+
+.criacao-metas-container h4{
+    margin-bottom: 10px;
+}
+
+.criacao-metas-container input{
+    margin-bottom: 10px;
+    padding: 8px;
+    border: none;
+    background-color: #dddddd;
+    border-radius: 16px;
+}
+
+.criacao-metas-container button{
+    padding: 8px;
+    border: none;
+    background-color: #000000;
+    border-radius: 16px;
+    color: #fff;
+    cursor: pointer;
+    margin: 10px 0;
+}

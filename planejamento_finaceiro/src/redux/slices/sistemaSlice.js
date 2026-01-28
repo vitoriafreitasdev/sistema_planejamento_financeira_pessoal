@@ -4,6 +4,9 @@ import { createSlice } from "@reduxjs/toolkit";
 const localSave = localStorage.getItem("historico")
 const dadosSave = localStorage.getItem("dados")
 const orcamentoSave = localStorage.getItem("orcamentos")
+const metasSalvas = localStorage.getItem("metas")
+const saldoSalvo = localStorage.getItem("saldo")
+
 
 const estadoInicial = { 
     historico: localSave ? JSON.parse(localSave) : {}, // var para os graficos
@@ -14,7 +17,9 @@ const estadoInicial = {
     totalDeDespesas: 0,
     receitaTotal: 0,
     categoriaDeDespesas: {},
-    orcamentos: orcamentoSave ? JSON.parse(orcamentoSave) : {}
+    orcamentos: orcamentoSave ? JSON.parse(orcamentoSave) : {},
+    metas: metasSalvas ? JSON.parse(metasSalvas) : {},
+    saldoAtual: saldoSalvo ? saldoSalvo : 0
 }
 
 const sistemaSlice = createSlice(
@@ -67,6 +72,7 @@ const sistemaSlice = createSlice(
                 //Aqui para receita x despesa
                 
                 let receitaValorTotal = 0
+
                 const labels = []
                 const receita = {}
                 const despesa = {}
@@ -89,6 +95,8 @@ const sistemaSlice = createSlice(
                                 despesa[data] = 0
                             }
                             despesa[data] += parseFloat(element.valor)
+                    
+
                             
                         }
                     })
@@ -163,7 +171,6 @@ const sistemaSlice = createSlice(
                 
                 const objLocalStorage = JSON.stringify(state.orcamentos)
                 localStorage.setItem("orcamentos", objLocalStorage)
-
             },
             excluirOrcamento: (state, action) => {
                 const entries = Object.entries(state.orcamentos)
@@ -173,10 +180,19 @@ const sistemaSlice = createSlice(
                 state.orcamentos = filter 
                 localStorage.setItem("orcamentos", JSON.stringify(filter))
 
+            },
+            addMetas: (state, action) => {
+                const objeto = action.payload
+                state.metas[objeto.meta] = {valor: objeto.valor, data: objeto.data}
+                localStorage.setItem("metas", JSON.stringify(state.metas))
+            },
+            atualizarSaldo: (state, action) => {
+                state.saldoAtual = action.payload
+                localStorage.setItem("saldo", state.saldoAtual)
             }
         }
     }
 )
 
-export const {passarTransacao, dadosReceitaDesp, dadosDespCategoria, excluirDados, addOrcamento, excluirOrcamento} = sistemaSlice.actions
+export const {passarTransacao, dadosReceitaDesp, dadosDespCategoria, excluirDados, addOrcamento, excluirOrcamento, addMetas, atualizarSaldo} = sistemaSlice.actions
 export default sistemaSlice.reducer
