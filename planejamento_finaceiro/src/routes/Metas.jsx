@@ -3,10 +3,12 @@ import { useState } from "react"
 import "./Metas.css"
 import {useDispatch, useSelector} from "react-redux"
 import { addMetas } from "../redux/slices/sistemaSlice"
+import useMetas from "../hooks/metas"
 const Metas = () => {
   const [meta, setMeta] = useState("")
   const [valor, setValor] = useState(0)
   const [data, setData] = useState("")
+  const [progresso, setProgresso] = useState(0)
 
   const dispatch = useDispatch()
   const metas = useSelector((state) => state.sistema.metas)
@@ -26,6 +28,7 @@ const Metas = () => {
   }
 
 
+  useMetas(metas, progresso)
 
   
   return (
