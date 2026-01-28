@@ -19,7 +19,7 @@ const estadoInicial = {
     categoriaDeDespesas: {},
     orcamentos: orcamentoSave ? JSON.parse(orcamentoSave) : {},
     metas: metasSalvas ? JSON.parse(metasSalvas) : {},
-    saldoAtual: saldoSalvo ? saldoSalvo : 0
+    saldoAtual: saldoSalvo ? parseFloat(saldoSalvo) : 0
 }
 
 const sistemaSlice = createSlice(
@@ -41,7 +41,6 @@ const sistemaSlice = createSlice(
                         })
                         );
                         state.historico = filteredObject
-                        localStorage.removeItem("historico")
                         localStorage.setItem("historico", filteredObject)
                     }
                 }
@@ -57,6 +56,12 @@ const sistemaSlice = createSlice(
                 
                 state.historico[data].push(transacao);
                 state.dados = Object.values(state.historico)
+
+                // atualização do saldo
+                if(transacao.receita_desp === "receita"){
+                    state.saldoAtual += parseFloat(transacao.valor)
+                    localStorage.setItem("saldo", state.saldoAtual)
+                }
 
                 const dadosParaStorage = JSON.stringify(state.dados)
                 const objeto = JSON.stringify(state.historico)

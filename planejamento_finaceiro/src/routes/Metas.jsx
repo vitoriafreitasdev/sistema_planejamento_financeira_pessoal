@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState } from "react"
 import "./Metas.css"
 import {useDispatch, useSelector} from "react-redux"
@@ -24,8 +25,7 @@ const Metas = () => {
     
   }
 
-  console.log(metas)
-  console.log(saldoAtual)
+
 
   
   return (
