@@ -188,16 +188,44 @@ const sistemaSlice = createSlice(
             },
             addMetas: (state, action) => {
                 const objeto = action.payload
-                state.metas[objeto.meta] = {valor: objeto.valor, data: objeto.data}
+                // calculo de dias restantes
+                const dataAtual = new Date()
+                const data = new Date(objeto.data)
+                const diffMs = data.getTime() - dataAtual.getTime()
+                const diasRest = Math.floor(diffMs / (1000 * 60 * 60 * 24))
+                // porcentagem
+                const porcentagem =  (objeto.progresso/objeto.valor) * 100
+
+                
+                state.metas[objeto.meta] = {valor: objeto.valor, progresso: parseFloat(objeto.progresso), data: objeto.data, restante: diasRest, porcentagem: Math.floor(porcentagem)}
+
                 localStorage.setItem("metas", JSON.stringify(state.metas))
             },
             atualizarSaldo: (state, action) => {
                 state.saldoAtual = action.payload
                 localStorage.setItem("saldo", state.saldoAtual)
+            },
+            adicionarProgressoAsMetas: (state, action) => {
+                const key = action.payload.key 
+                const quant = parseFloat(action.payload.quantidade)
+
+                // atualizar o saldo do usuário 
+                if(state.saldoAtual >= quant){
+                    state.saldoAtual -= quant
+                    localStorage.setItem("saldo", state.saldoAtual)
+                }
+                else{
+                    throw new Error("Saldo insuficiente")
+                }
+
+                state.metas[key].progresso += quant
+                const porcentagem =  (state.metas[key].progresso/state.metas[key].valor) * 100
+                state.metas[key].porcentagem = Math.floor(porcentagem)
+                localStorage.setItem("metas", JSON.stringify(state.metas)) 
             }
         }
     }
 )
 
-export const {passarTransacao, dadosReceitaDesp, dadosDespCategoria, excluirDados, addOrcamento, excluirOrcamento, addMetas, atualizarSaldo} = sistemaSlice.actions
+export const {passarTransacao, dadosReceitaDesp, dadosDespCategoria, excluirDados, addOrcamento, excluirOrcamento, addMetas, atualizarSaldo, adicionarProgressoAsMetas} = sistemaSlice.actions
 export default sistemaSlice.reducer

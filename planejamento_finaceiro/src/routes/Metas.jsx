@@ -2,23 +2,26 @@
 import { useState } from "react"
 import "./Metas.css"
 import {useDispatch, useSelector} from "react-redux"
-import { addMetas } from "../redux/slices/sistemaSlice"
-import useMetas from "../hooks/metas"
+import { addMetas, adicionarProgressoAsMetas } from "../redux/slices/sistemaSlice"
+import OrcamentosContainer from "../componentes/OrcamentosContainer"
 const Metas = () => {
   const [meta, setMeta] = useState("")
   const [valor, setValor] = useState(0)
   const [data, setData] = useState("")
   const [progresso, setProgresso] = useState(0)
+  const [mensagem, setMensagem] = useState(null)
+
 
   const dispatch = useDispatch()
   const metas = useSelector((state) => state.sistema.metas)
   const saldoAtual = useSelector((state) => state.sistema.saldoAtual)
 
-
+// {valor: metas[meta].valor, progresso: parseFloat(progresso), restante: diasRest, porcentagem: porcentagem}
   const adicionarMeta = () => {
     const objetoMeta = {
       "meta": meta,
       "valor": valor,
+      "progresso": 0,
       "data": data
     }
 
@@ -28,8 +31,15 @@ const Metas = () => {
   }
 
 
-  useMetas(metas, progresso)
+  const handleAdd = (key, quantidade) => {
+    try {
+      dispatch(adicionarProgressoAsMetas({key: key, quantidade: quantidade}))
+    } catch (error) {
+      setMensagem(error)
+    }
+  }
 
+  // trabalhar na mensagem de erro
   
   return (
     <div className="metas-container-principal">
@@ -45,8 +55,10 @@ const Metas = () => {
           <button onClick={adicionarMeta}>+ Adicionar Meta</button>
       </div>
 
-      <div className="metas-ativas-conatiner">
-
+      <div className="ativos-div">
+          {Object.keys(metas).map((key) => (
+            <OrcamentosContainer key={key} nome={key} p={key} meta={metas[key].valor} valor={metas[key].progresso} porcentagem={metas[key].porcentagem} restante={metas[key].restante} orcamento={false} funct={handleAdd}/>
+          ))}
       </div>
     </div>
   )

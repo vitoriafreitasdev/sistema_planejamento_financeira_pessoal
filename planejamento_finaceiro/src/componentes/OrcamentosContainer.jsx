@@ -1,14 +1,22 @@
 
+
 import { useDispatch } from "react-redux"
 import lix from "../images/lix.png"
 import { excluirOrcamento } from "../redux/slices/sistemaSlice"
+import { useState } from "react"
 
-const OrcamentosContainer = ({nome, p, valor, valorSalvo, porcentagem, restante}) => {
+// Esse componente é esta sendo utilizado tando para as metas tanto para os orçamento, caso seja orçamento, orcamento=true, se não false
+const OrcamentosContainer = ({nome, p, valor, meta, porcentagem, restante, orcamento=true, funct=false}) => {
+  const [showComponente, setShowComponente] = useState(false)
+  const [progressoValor, setProgressoValor] = useState(0)
 
   const dispatch = useDispatch()
 
   const exclusao = (item) => {
-    dispatch(excluirOrcamento(item))
+    if(orcamento){
+      dispatch(excluirOrcamento(item))
+    }
+
   }
 
   return (
@@ -22,15 +30,24 @@ const OrcamentosContainer = ({nome, p, valor, valorSalvo, porcentagem, restante}
             <div className="orcamento-div1">
             <div className="span-div">
                 <span className="span-valor">R$ {valor}</span> 
-                <span className="span-valor-orcamento">de R${valorSalvo}</span>
+                <span className="span-valor-orcamento">de R${meta}</span>
             </div>
-            <input className="input-range" type="range" value={valor } max={valorSalvo}/>
+            <input className="input-range" type="range" value={valor } max={meta}/>
             </div>
 
             <div className="orcamento-div2">
-            <p className="p-porcentagem">{porcentagem}% utilizado</p>
-            <p className="p-valor">R$ {restante} disponível</p>
+            <p className="p-porcentagem">{porcentagem}% {orcamento ? "utilizado" : "completo"}</p>
+            <p className="p-valor">{orcamento ? "R$" : ""} {restante} {orcamento ? "disponível" : "dias restantes"}</p>
             </div>
+
+            {/* Essa parte é para as metas */}
+            {!orcamento && <button className="progresso-btn" onClick={() => setShowComponente(!showComponente)}>Adicionar Progresso</button>}
+
+            {showComponente && 
+            <div className="progresso-div">
+              <input type="number" onChange={(e) => setProgressoValor(e.target.value)}  placeholder="progresso valor"/>
+              <button onClick={() => funct(nome, progressoValor)}>Adicionar</button>
+            </div>}
     </div>
   )
 }
