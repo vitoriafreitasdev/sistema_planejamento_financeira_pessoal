@@ -62,6 +62,10 @@ const sistemaSlice = createSlice(
                     state.saldoAtual += parseFloat(transacao.valor)
                     localStorage.setItem("saldo", state.saldoAtual)
                 }
+                if(transacao.receita_desp === "despesa"){
+                    state.saldoAtual -= parseFloat(transacao.valor)
+                    localStorage.setItem("saldo", state.saldoAtual)
+                }
 
                 const dadosParaStorage = JSON.stringify(state.dados)
                 const objeto = JSON.stringify(state.historico)

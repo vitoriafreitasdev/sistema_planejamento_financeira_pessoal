@@ -31,7 +31,7 @@ const Dashboard = () => {
             </div>
             <div>
                 <h4>Metas de Economia</h4>
-                <p className="p-num economia">{porcentagemMetas}%</p>
+                <p className="p-num economia">{!Number.isNaN(Number(porcentagemMetas)) ? porcentagemMetas : "0"}%</p>
                 <p className="p-info">R$ {progresso} de R$ {total}</p>
             </div>
         </div>
