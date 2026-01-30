@@ -33,7 +33,6 @@ export default function  Dados(){
         progresso += parseFloat(v.progresso)
     });
 
-    console.log(total, progresso)
     const porcentagemMetas = Math.floor((progresso / total) * 100)
 
     //Graficos

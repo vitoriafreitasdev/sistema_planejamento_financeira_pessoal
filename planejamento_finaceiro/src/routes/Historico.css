@@ -86,3 +86,10 @@
     font-weight: bolder;
 
 }
+
+@media (min-width:300px) and (max-width: 500px) {
+    .transicoes{
+       font-size: 10px;
+    }
+    
+}

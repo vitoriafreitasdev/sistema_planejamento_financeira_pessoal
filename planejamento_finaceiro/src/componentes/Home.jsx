@@ -8,7 +8,7 @@ const Home = () => {
           <h1>Uma maneira simples de organizar as suas finaças pessoais.</h1>
           <p>
               Se junte aos nossos outros usuários e utilize nosso sistema para gerenciar seus gastos e se prevenir de tomar aquele susto de final de mês.
-              <span>Atualize suas transações, orçamentos e metas para ter acesso ao Dashboard interativo como o da imagem.</span>
+              <span>Atualize suas transações, orçamentos e metas para ter acesso ao Dashboard interativo.</span>
           </p>
           
         </div>
