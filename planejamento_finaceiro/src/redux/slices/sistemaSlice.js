@@ -215,7 +215,7 @@ const sistemaSlice = createSlice(
                     localStorage.setItem("saldo", state.saldoAtual)
                 }
                 else{
-                    throw new Error("Saldo insuficiente")
+                    throw new Error("Saldo insuficiente para adicionar o progresso")
                 }
 
                 state.metas[key].progresso += quant

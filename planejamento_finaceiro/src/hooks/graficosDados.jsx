@@ -5,6 +5,7 @@ import {dadosDespCategoria, dadosReceitaDesp } from "../redux/slices/sistemaSlic
 import dadosOrcamento from "./orcamentos"
 export default function  Dados(){
     const dispatch = useDispatch()
+
     // Para receita x despesa
     dispatch(dadosReceitaDesp())
     const labels = useSelector((state) => state.sistema.labels)
@@ -15,16 +16,29 @@ export default function  Dados(){
     const totalDespesas = useSelector((state) => state.sistema.totalDeDespesas)
     const receitaTotal = useSelector((state) => state.sistema.receitaTotal)
     const categorias = useSelector((state) => state.sistema.categoriaDeDespesas)
-
    // const saldoTotal = Math.floor(parseFloat(receitaTotal) - parseFloat(totalDespesas))
     const saldoAtual = useSelector((state) => state.sistema.saldoAtual)
-
     // Para orcamento X realizado 
-
     const historico = useSelector((state) => state.sistema.historico)
     const orcamentosSalvos = useSelector((state) => state.sistema.orcamentos)
+    // para metas de economia
+    const metas = useSelector((state) => state.sistema.metas)
 
-  
+    let total = 0
+    let progresso = 0
+
+    Object.values(metas).forEach((v) => {
+        
+        total += parseFloat(v.valor)
+        progresso += parseFloat(v.progresso)
+    });
+
+    console.log(total, progresso)
+    const porcentagemMetas = Math.floor((progresso / total) * 100)
+
+    //Graficos
+
+    //Receitas e despesas
     const [grafficValores] = useState({
         labels: labels,
         datasets: [
@@ -46,7 +60,7 @@ export default function  Dados(){
         ]
     })
 
-  
+    //Despesas por categorias
     const [despesasCategorias] = useState({
         labels: Object.keys(categorias),
         datasets: [
@@ -65,6 +79,7 @@ export default function  Dados(){
         ]
     })
 
+    //Orçamento X Realizado
     const objeto = dadosOrcamento(orcamentosSalvos, historico)
     const [orcamentoXrealizado] = useState({
         labels: Object.keys(objeto),
@@ -86,7 +101,7 @@ export default function  Dados(){
             }
         ]
     })
-    return {grafficValores, despesasCategorias, totalDespesas, receitaTotal, saldoAtual, orcamentoXrealizado}
+    return {grafficValores, despesasCategorias, totalDespesas, receitaTotal, saldoAtual, orcamentoXrealizado, total, progresso, porcentagemMetas}
     
 }
 

@@ -14,9 +14,7 @@ const Metas = () => {
 
   const dispatch = useDispatch()
   const metas = useSelector((state) => state.sistema.metas)
-  const saldoAtual = useSelector((state) => state.sistema.saldoAtual)
 
-// {valor: metas[meta].valor, progresso: parseFloat(progresso), restante: diasRest, porcentagem: porcentagem}
   const adicionarMeta = () => {
     const objetoMeta = {
       "meta": meta,
@@ -35,7 +33,10 @@ const Metas = () => {
     try {
       dispatch(adicionarProgressoAsMetas({key: key, quantidade: quantidade}))
     } catch (error) {
-      setMensagem(error)
+      setMensagem(error.message)
+      setTimeout(() => {
+        setMensagem(null)
+      }, 2000)
     }
   }
 
@@ -44,8 +45,9 @@ const Metas = () => {
   return (
     <div className="metas-container-principal">
       <div className="criacao-metas-container">
+          
           <h3>Nova meta de economia</h3>
-          <p>Defina objetivos financeiros e acompanhe seu progresso</p>
+          <p>Defina objetivos financeiros, reserve um dinheiro para eles e acompanhe o seu progresso.</p>
           <h4>Nome da meta</h4>
           <input type="text" placeholder="Ex: Viagem, Emergência, Carro" onChange={(e) => setMeta(e.target.value)}/>
           <h4>Valor alvo (R$)</h4>
@@ -56,6 +58,7 @@ const Metas = () => {
       </div>
 
       <div className="ativos-div">
+          <p>{mensagem}</p>
           {Object.keys(metas).map((key) => (
             <OrcamentosContainer key={key} nome={key} p={key} meta={metas[key].valor} valor={metas[key].progresso} porcentagem={metas[key].porcentagem} restante={metas[key].restante} orcamento={false} funct={handleAdd}/>
           ))}

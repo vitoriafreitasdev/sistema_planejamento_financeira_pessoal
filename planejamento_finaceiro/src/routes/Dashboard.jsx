@@ -7,7 +7,7 @@ import OrcamentRealiz from "../graficos/OrcamentRealiz.jsx"
 
 import Dados from "../hooks/graficosDados.jsx"
 const Dashboard = () => {
-  const {grafficValores, despesasCategorias, totalDespesas, receitaTotal, saldoAtual, orcamentoXrealizado} = Dados()
+  const {grafficValores, despesasCategorias, totalDespesas, receitaTotal, saldoAtual, orcamentoXrealizado, total, progresso, porcentagemMetas} = Dados()
 
   return (
     <div className='dashboard-main-container'>
@@ -31,8 +31,8 @@ const Dashboard = () => {
             </div>
             <div>
                 <h4>Metas de Economia</h4>
-                <p className="p-num economia"> </p>
-                <p className="p-info"> </p>
+                <p className="p-num economia">{porcentagemMetas}%</p>
+                <p className="p-info">R$ {progresso} de R$ {total}</p>
             </div>
         </div>
 
