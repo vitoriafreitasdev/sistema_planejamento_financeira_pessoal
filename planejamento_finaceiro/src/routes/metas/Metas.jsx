@@ -2,8 +2,8 @@
 import { useState } from "react"
 import "./Metas.css"
 import {useDispatch, useSelector} from "react-redux"
-import { addMetas, adicionarProgressoAsMetas } from "../redux/slices/sistemaSlice"
-import OrcamentosContainer from "../componentes/OrcamentosContainer"
+import { addMetas, adicionarProgressoAsMetas } from "../../redux/slices/sistemaSlice"
+import OrcamentosContainer from "../../componentes/OrcamentosContainer"
 const Metas = () => {
   const [meta, setMeta] = useState("")
   const [valor, setValor] = useState(0)

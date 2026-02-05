@@ -14,7 +14,7 @@ Sistema de metas e alertas
 
 // construir componentes testaveis 
 
-🧩 Simple Components: Facilitate unit testing. => Break Down Components and Keep Them Simple
+🧩 Simple Components: Facilitate unit testing. => BreaDownk  Components and Keep Them Simple
 🧠 Separate Logic: Isolate complexity in functions. => Avoid Complex Logic in Components
 🛠️ Props for Dependencies: Enhance testability. => Write Unit and Integration Tests
 ✅ Unit and Integration Tests: Ensure complete coverage. => Use Props to Inject Dependencies

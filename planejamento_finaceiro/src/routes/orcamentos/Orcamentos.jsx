@@ -2,9 +2,9 @@
 import "./Orcamentos.css"
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { addOrcamento, dadosDespCategoria } from "../redux/slices/sistemaSlice"
-import dadosOrcamento from "../hooks/orcamentos"
-import OrcamentosContainer from "../componentes/OrcamentosContainer"
+import { addOrcamento, dadosDespCategoria } from "../../redux/slices/sistemaSlice"
+import dadosOrcamento from "../../hooks/orcamentos"
+import OrcamentosContainer from "../../componentes/OrcamentosContainer"
 
 // fazer a logica de exclusao 
 const Orcamentos = () => {

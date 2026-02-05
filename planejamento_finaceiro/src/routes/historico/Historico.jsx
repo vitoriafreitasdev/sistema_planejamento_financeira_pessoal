@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
 import {useDispatch, useSelector} from "react-redux"
-import icone from "../images/icone.png"
-import setaverde from "../images/setaverde2.avif"
-import setavermelha from "../images/seta2.avif"
-import { excluirDados } from "../redux/slices/sistemaSlice"
+import icone from "../../images/icone.png"
+import setaverde from "../../images/setaverde2.avif"
+import setavermelha from "../../images/seta2.avif"
+import { excluirDados } from "../../redux/slices/sistemaSlice"
 
 import "./Historico.css"
 const Historico = () => {

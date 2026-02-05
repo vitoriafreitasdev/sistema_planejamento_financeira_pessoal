@@ -9,11 +9,11 @@ import Home from './componentes/Home.jsx'
 import {createBrowserRouter, RouterProvider} from "react-router-dom"
 import {Provider} from "react-redux"
 import {store} from './redux/store.js'
-import Dashboard from './routes/Dashboard.jsx'
-import Transacoes from './routes/Transacoes.jsx'
-import Historico from './routes/Historico.jsx'
-import Orcamentos from './routes/Orcamentos.jsx'
-import Metas from './routes/Metas.jsx'
+import Dashboard from './routes/dashboard/Dashboard.jsx'
+import Transacoes from './routes/transacoes/Transacoes.jsx'
+import Historico from './routes/historico/Historico.jsx'
+import Orcamentos from './routes/orcamentos/Orcamentos.jsx'
+import Metas from './routes/metas/Metas.jsx'
 
 const router = createBrowserRouter(
   [

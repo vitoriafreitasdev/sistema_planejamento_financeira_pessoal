@@ -3,7 +3,7 @@ import "./Transacoes.css"
 
 import { useState } from "react"
 import { useDispatch} from "react-redux"
-import {passarTransacao} from "../redux/slices/sistemaSlice.js"
+import {passarTransacao} from "../../redux/slices/sistemaSlice.js"
 
 const Transacoes = () => {
   const [despOuReceit, setDespOuReceit] = useState("receita")
