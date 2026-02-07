@@ -3,7 +3,7 @@ import "./Dashboard.css"
 
 import Graffic from "../../graficos/Graffic.jsx"
 import DespesaCategoria from "../../graficos/DespesaCategoria.jsx"
-import Dados from "../../hooks/graficosDados.jsx"
+import Dados from "../../utils/graficosDados.jsx"
 import BoxData from "./BoxData.jsx"
 import GrafficBox from "./GrafficBox.jsx"
 import ContainerGraffic from "./ContainerGraffic.jsx"

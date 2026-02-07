@@ -109,6 +109,10 @@
     color: rgb(10, 155, 10);
 }
 
+.orcamento-container h4::first-letter{
+    text-transform: uppercase;
+}
+
 .orcamento-container h4 {
     margin: 10px 0 13px 0;
 }

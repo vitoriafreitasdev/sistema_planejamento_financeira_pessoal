@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { addOrcamento } from "../../../redux/slices/sistemaSlice"
-import dadosOrcamento from "../../../hooks/orcamentos"
+import dadosOrcamento from "../../../utils/orcamentos"
 
 const useOrcamento = () => {
     const historico = useSelector((state) => state.sistema.historico)
@@ -27,7 +27,6 @@ const useOrcamento = () => {
     }
 
     const valores = dadosOrcamento(orcamentosSalvos, historico)
-
     return {valores, setCategoria, setOrcamentoNum, mensagem, adicionarOrcamento, orcamentosSalvos} 
 }
 
