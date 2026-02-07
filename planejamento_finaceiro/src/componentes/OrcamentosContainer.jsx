@@ -2,7 +2,7 @@
 
 import { useDispatch } from "react-redux"
 import lix from "../images/lix.png"
-import { excluirOrcamento } from "../redux/slices/sistemaSlice"
+import { excluirMetas, excluirOrcamento } from "../redux/slices/sistemaSlice"
 import { useState } from "react"
 
 // Esse componente é esta sendo utilizado tando para as metas tanto para os orçamento, caso seja orçamento, orcamento=true, se não false
@@ -17,7 +17,14 @@ const OrcamentosContainer = ({nome, p, valor, meta, porcentagem, restante, orcam
       dispatch(excluirOrcamento(item))
     }
 
+    if(!orcamento){
+      dispatch(excluirMetas(item))
+      window.location.reload()
+    }
+
   }
+   
+  // melhorar esse componente, ver se da usar outro forma que nao seja o window.location.reload
 
   return (
     <div className="orcamento-container">

@@ -226,10 +226,19 @@ const sistemaSlice = createSlice(
                 const porcentagem =  (state.metas[key].progresso/state.metas[key].valor) * 100
                 state.metas[key].porcentagem = Math.floor(porcentagem)
                 localStorage.setItem("metas", JSON.stringify(state.metas)) 
+            },
+            excluirMetas: (state, action) => {
+                const entries = Object.entries(state.metas)
+                // fromEntries pega uma lista de chave e valores e transforma em um objeto
+                const filter = Object.fromEntries(entries.filter((chave) => !chave.includes(action.payload)))
+
+                state.orcamentos = filter 
+                localStorage.setItem("metas", JSON.stringify(filter))
+
             }
         }
     }
 )
 
-export const {passarTransacao, dadosReceitaDesp, dadosDespCategoria, excluirDados, addOrcamento, excluirOrcamento, addMetas, atualizarSaldo, adicionarProgressoAsMetas} = sistemaSlice.actions
+export const {passarTransacao, dadosReceitaDesp, dadosDespCategoria, excluirDados, addOrcamento, excluirOrcamento, addMetas, atualizarSaldo, adicionarProgressoAsMetas, excluirMetas} = sistemaSlice.actions
 export default sistemaSlice.reducer
