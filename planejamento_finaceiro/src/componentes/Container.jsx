@@ -1,27 +1,12 @@
 
-
-import { useDispatch } from "react-redux"
 import lix from "../images/lix.png"
-import { excluirMetas, excluirOrcamento } from "../redux/slices/sistemaSlice"
-import { useState } from "react"
+import ContainerParaMetas from "./ContainerParaMetas"
+import useContainer from "../hooks/useContainer"
 
 // Esse componente é esta sendo utilizado tando para as metas tanto para os orçamento, caso seja orçamento, orcamento=true, se não false
-const OrcamentosContainer = ({nome, p, valor, meta, porcentagem, restante, orcamento=true, funct=false}) => {
-  const [showComponente, setShowComponente] = useState(false)
-  const [progressoValor, setProgressoValor] = useState(0)
-
-  const dispatch = useDispatch()
-
-  const exclusao = (item) => {
-    if(orcamento){
-      dispatch(excluirOrcamento(item))
-    }
-
-    if(!orcamento){
-      dispatch(excluirMetas(item))
-    }
-
-  }
+const Container = ({nome, p, valor, meta, porcentagem, restante, orcamento=true, funct=false}) => {
+  const {showComponente, setShowComponente, progressoValor, setProgressoValor, exclusao} = useContainer(orcamento)
+  const propsParaCont = {setShowComponente, showComponente, setProgressoValor, funct, nome, progressoValor}
 
   return (
     <div className="orcamento-container">
@@ -45,15 +30,11 @@ const OrcamentosContainer = ({nome, p, valor, meta, porcentagem, restante, orcam
             </div>
 
             {/* Essa parte é para as metas */}
-            {!orcamento && <button className="progresso-btn" onClick={() => setShowComponente(!showComponente)}>Adicionar Progresso</button>}
-
-            {showComponente && 
-            <div className="progresso-div">
-              <input type="number" onChange={(e) => setProgressoValor(e.target.value)}  placeholder="progresso valor"/>
-              <button onClick={() => funct(nome, progressoValor)}>Adicionar</button>
-            </div>}
+            {!orcamento && 
+            <ContainerParaMetas props={propsParaCont}/>
+            }
     </div>
   )
 }
 
-export default OrcamentosContainer
+export default Container

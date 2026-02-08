@@ -1,6 +1,6 @@
 
 import "./Metas.css"
-import OrcamentosContainer from "../../componentes/OrcamentosContainer"
+import Container from "../../componentes/Container"
 import useMetas from "./metas_hooks/useMetas"
 import MetasContainer from "./MetasContainer"
 const Metas = () => {
@@ -13,7 +13,7 @@ const Metas = () => {
       <div className="ativos-div">
           <p>{mensagem}</p>
           {metas && Object.keys(metas).map((key) => (
-            <OrcamentosContainer key={key} nome={key} p={key} meta={metas[key].valor} valor={metas[key].progresso} porcentagem={metas[key].porcentagem} restante={metas[key].restante} orcamento={false} funct={handleAdd}/>
+            <Container key={key} nome={key} p={key} meta={metas[key].valor} valor={metas[key].progresso} porcentagem={metas[key].porcentagem} restante={metas[key].restante} orcamento={false} funct={handleAdd}/>
           ))}
       </div>
     </div>
