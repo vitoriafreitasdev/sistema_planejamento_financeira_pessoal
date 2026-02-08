@@ -232,7 +232,7 @@ const sistemaSlice = createSlice(
                 // fromEntries pega uma lista de chave e valores e transforma em um objeto
                 const filter = Object.fromEntries(entries.filter((chave) => !chave.includes(action.payload)))
 
-                state.orcamentos = filter 
+                state.metas = filter 
                 localStorage.setItem("metas", JSON.stringify(filter))
 
             }

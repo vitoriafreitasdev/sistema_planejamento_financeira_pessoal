@@ -19,12 +19,9 @@ const OrcamentosContainer = ({nome, p, valor, meta, porcentagem, restante, orcam
 
     if(!orcamento){
       dispatch(excluirMetas(item))
-      window.location.reload()
     }
 
   }
-   
-  // melhorar esse componente, ver se da usar outro forma que nao seja o window.location.reload
 
   return (
     <div className="orcamento-container">
