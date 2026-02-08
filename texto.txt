@@ -21,3 +21,6 @@ Sistema de metas e alertas
 🎭 Mocks and Spies: Simulate dependencies and verify interactions. => Use Mocks and Spies
 
 - Começar pelo componentes Dashboard, e baixar as dependencias 
+
+
+- Agora começar a Write Unit and Integration Tests

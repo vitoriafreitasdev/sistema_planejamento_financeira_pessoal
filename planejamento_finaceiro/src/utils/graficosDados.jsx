@@ -16,7 +16,7 @@ export default function  Dados(){
     const totalDespesas = useSelector((state) => state.sistema.totalDeDespesas)
     const receitaTotal = useSelector((state) => state.sistema.receitaTotal)
     const categorias = useSelector((state) => state.sistema.categoriaDeDespesas)
-   // const saldoTotal = Math.floor(parseFloat(receitaTotal) - parseFloat(totalDespesas))
+
     const saldoAtual = useSelector((state) => state.sistema.saldoAtual)
     // Para orcamento X realizado 
     const historico = useSelector((state) => state.sistema.historico)

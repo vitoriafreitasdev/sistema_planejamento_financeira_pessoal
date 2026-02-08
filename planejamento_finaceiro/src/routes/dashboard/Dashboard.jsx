@@ -1,4 +1,5 @@
 
+//Dashboard.jsx
 import "./Dashboard.css"
 
 import Graffic from "../../graficos/Graffic.jsx"

@@ -1,8 +1,9 @@
-import React from 'react'
+
+//GrafficBox
 
 const GrafficBox = ({classN, title, pContent, classN2, component}) => {
   return (
-    <div className={classN}>
+    <div className={classN} data-testid="GrafficBox">
         <h3>{title}</h3>
         <p>{pContent}</p>
         <div className={classN2}>
