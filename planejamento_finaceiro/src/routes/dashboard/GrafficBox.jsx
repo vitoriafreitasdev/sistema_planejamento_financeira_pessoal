@@ -6,7 +6,7 @@ const GrafficBox = ({classN, title, pContent, classN2, component}) => {
     <div className={classN} data-testid="GrafficBox">
         <h3>{title}</h3>
         <p>{pContent}</p>
-        <div className={classN2}>
+        <div className={classN2} data-testid="div-element">
             {component}
         </div>
     </div>

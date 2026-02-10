@@ -3,7 +3,7 @@ import "./OrcamentRealiz.css"
 import { Bar } from "react-chartjs-2";
 const OrcamentRealiz = ({ chartData }) => {
   return (
-    <div className="chart-container-bar">
+    <div className="chart-container-bar" data-testid="OrcamentRealiz">
       <Bar
         data={chartData}
         options={{

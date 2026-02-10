@@ -48,3 +48,6 @@ const mes = String(data.getMonth() + 1).padStart(2, '0'); // Mês inicia em 0
 const ano = data.getFullYear();
 const dataAtual = `${dia}/${mes}/${ano}`;
 console.log(dataAtual); // Ex: "28/01/2026" [3, 8]
+
+
+console.log(Math.floor(12.5))

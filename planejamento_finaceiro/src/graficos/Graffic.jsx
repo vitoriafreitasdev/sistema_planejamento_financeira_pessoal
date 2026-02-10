@@ -5,7 +5,7 @@ import {  Bar } from 'react-chartjs-2';
 
 export default function Graffic({ chartData }) {
   return (
-    <div className="chart-container">
+    <div className="chart-container" data-testid="Graffic">
       
     <Bar
         data={chartData}
