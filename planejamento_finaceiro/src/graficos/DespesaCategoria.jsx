@@ -7,6 +7,7 @@ function DespesaCategoria({ despesa }) {
   return (
     <div className="chart-container-pie" data-testid="DespesaCategoria">
       <Pie
+        data-testid="Pie-element-chart"
         data={despesa}
         options={{
           plugins: {

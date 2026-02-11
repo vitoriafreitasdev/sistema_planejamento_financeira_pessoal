@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 
 
 // Testing
@@ -16,9 +15,10 @@ import BoxData from "../../routes/dashboard/BoxData.jsx"
 import ContainerGraffic from "../../routes/dashboard/ContainerGraffic.jsx"
 import Graffic from "../../graficos/Graffic.jsx"
 import DespesaCategoria from "../../graficos/DespesaCategoria.jsx"
+import OrcamentRealiz from "../../graficos/OrcamentRealiz.jsx"
 
 //Dados mockados
-import {preloadedState, mockObjeto } from "../mocked_data_for_test/data.js"
+import {resObj, grafficValores, DespCat } from "../mocked_data_for_test/data.js"
 import GrafficBox from "../../routes/dashboard/GrafficBox.jsx"
 
 
@@ -57,30 +57,10 @@ describe("Testing the components rendering", () => {
 
     it("Should see if component ContainerGraffic is rendering the HTML elements that needs to render", async () => {
 
-        
-        const prop = {
-            labels: Object.keys(mockObjeto),
-            datasets: [
-                {
-                    label: "Orçamento salvo",
-                    data: Object.values(mockObjeto).map((value) => value.orcamento),
-                    backgroundColor: "rgba(73, 89, 231, 0.78)",
-                    borderColor: "rgb(20, 42, 88)",
-                    borderWidth: 2,
-                    tension: 0.4
-                }, 
-                {
-                    label: "Valor gasto",
-                    data: Object.values(mockObjeto).map((value) => value.valor),
-                    backgroundColor: "#63b9ff",
-                    borderColor: "blue",
-                    borderWidth: 2
-                }
-            ]
-        }
+    
 
         render(
-            <ContainerGraffic orcamentoXrealizado={prop}/>
+            <ContainerGraffic orcamentoXrealizado={resObj}/>
         )
 
         const div = await screen.findAllByTestId("divelement")
@@ -97,27 +77,7 @@ describe("Testing the components rendering", () => {
     })
 
     it("Should see if component GrafficBox is rendering properly the HTML elements and Graffic component", async () => {
-        const grafficValores = {
-            labels: preloadedState.sistema.labels,
-            datasets: [
-                {
-                    label: "Receita",
-                    data: preloadedState.sistema.receita,
-                    backgroundColor: "rgba(53, 209, 170, 0.45)",
-                    borderColor: "green",
-                    borderWidth: 2
-                },
-                {
-                    label: "Despesa",
-                    data: preloadedState.sistema.despesa,
-                    backgroundColor: "rgba(243, 54, 95, 0.4)",
-                    borderColor: "rgb(197, 2, 2)",
-                    borderWidth: 2,
-                    tension: 0.4
-                }
-            ]
-        }
-
+        
         render(<GrafficBox classN={"tendencia-mensal"} title={"Tendencia Mensal"} pContent={"Receitas vs Despesas, últimas 6 registradas"} classN2={"grafico-div"} component={<Graffic key="tendencia-mensal-chart"  chartData={grafficValores} />}/>)
 
         const divGraffic = await screen.findByTestId("GrafficBox")
@@ -135,23 +95,6 @@ describe("Testing the components rendering", () => {
     })
 
     it("Should see if component GrafficBox is rendering properly DespesaCategoria component", async () => {
-        const DespCat = {
-            labels: Object.keys(preloadedState.sistema.categoriaDeDespesas),
-            datasets: [
-                {
-                    label: "despesa por categoria",
-                    data: Object.values(preloadedState.sistema.categoriaDeDespesas).map((value) => value.porcentagem),
-                    backgroundColor: [
-                    "rgba(19, 3, 161, 0.65)",  
-                    "rgba(34, 54, 238, 0.77)",
-                    "rgba(38, 148, 192, 0.56)",
-                    "rgba(31, 200, 223, 0.78)"
-                    ],
-                    borderColor: "white",
-                    borderWidth: 2
-                }
-            ]
-        }
         
         render(<GrafficBox classN={"despesa-categoria"} title={"Despesas por Categoria"} pContent={"Distribuição dos gastos"} classN2={"grafico-div"} component={<DespesaCategoria key="despesas-por-categoria" despesa={DespCat}/>}/>)
 
@@ -167,5 +110,39 @@ describe("Testing the components rendering", () => {
         expect(h4).toHaveTextContent("Despesas por Categoria")
         expect(p).toHaveTextContent("Distribuição dos gastos")
     })
+
+    /* 
+    Testar => DespesaCategoria, Graffic, OrcamentRealiz 
+    */
+
+    it("Should see if DespesaCategoria component is redenring the elements properly", async () => {
+
+        render(<DespesaCategoria despesa={DespCat}/>)
+
+        //Pie-element-chart
+        const pieComponent = await screen.findAllByTestId("Pie-element-chart")
+
+        expect(pieComponent).toBeDefined()
+    })
+
+    it("Should see if Graffic component is redenring the elements properly", async () => {
+
+        render(<Graffic chartData={grafficValores}/>)
+
+        const barComponent = await screen.findAllByTestId("bar-graffic-chart")
+
+        expect(barComponent).toBeDefined()
+    })
+
+    it("Should see if OrcamentRealiz component is redenring the elements properly", async () => {
+
+        render(<OrcamentRealiz chartData={resObj}/>)
+
+        //Pie-element-chart
+        const pieComponent = await screen.findAllByTestId("bar-OrcamentRealiz")
+
+        expect(pieComponent).toBeDefined()
+    })
+
 })
 

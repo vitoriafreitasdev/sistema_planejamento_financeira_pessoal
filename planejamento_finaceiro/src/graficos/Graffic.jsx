@@ -1,4 +1,5 @@
 
+// Componente Graffic
 import "./Graffics.css"
 import "./configs/Bar"
 import {  Bar } from 'react-chartjs-2';
@@ -8,6 +9,7 @@ export default function Graffic({ chartData }) {
     <div className="chart-container" data-testid="Graffic">
       
     <Bar
+        data-testid="bar-graffic-chart"
         data={chartData}
         options={{
           plugins: {

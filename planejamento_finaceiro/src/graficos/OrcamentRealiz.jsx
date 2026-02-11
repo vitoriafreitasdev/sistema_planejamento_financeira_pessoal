@@ -5,6 +5,7 @@ const OrcamentRealiz = ({ chartData }) => {
   return (
     <div className="chart-container-bar" data-testid="OrcamentRealiz">
       <Bar
+        data-testid="bar-OrcamentRealiz"
         data={chartData}
         options={{
           plugins: {
