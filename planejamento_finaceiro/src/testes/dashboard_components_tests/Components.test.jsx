@@ -96,7 +96,7 @@ describe("Testing the components rendering", () => {
         
     })
 
-    it("Should see if component GrafficBox is rendering properly the HTML elements", async () => {
+    it("Should see if component GrafficBox is rendering properly the HTML elements and Graffic component", async () => {
         const grafficValores = {
             labels: preloadedState.sistema.labels,
             datasets: [
@@ -132,7 +132,40 @@ describe("Testing the components rendering", () => {
         expect(h4).toHaveTextContent("Tendencia Mensal")
         expect(p).toHaveTextContent("Receitas vs Despesas, últimas 6 registradas")
 
+    })
 
+    it("Should see if component GrafficBox is rendering properly DespesaCategoria component", async () => {
+        const DespCat = {
+            labels: Object.keys(preloadedState.sistema.categoriaDeDespesas),
+            datasets: [
+                {
+                    label: "despesa por categoria",
+                    data: Object.values(preloadedState.sistema.categoriaDeDespesas).map((value) => value.porcentagem),
+                    backgroundColor: [
+                    "rgba(19, 3, 161, 0.65)",  
+                    "rgba(34, 54, 238, 0.77)",
+                    "rgba(38, 148, 192, 0.56)",
+                    "rgba(31, 200, 223, 0.78)"
+                    ],
+                    borderColor: "white",
+                    borderWidth: 2
+                }
+            ]
+        }
+        
+        render(<GrafficBox classN={"despesa-categoria"} title={"Despesas por Categoria"} pContent={"Distribuição dos gastos"} classN2={"grafico-div"} component={<DespesaCategoria key="despesas-por-categoria" despesa={DespCat}/>}/>)
+
+        const divGraffic = await screen.findByTestId("GrafficBox")
+        const divElement = await screen.findByTestId("div-element")
+        const component = await screen.findByTestId("DespesaCategoria")
+        const h4 = await screen.findByRole("heading")
+        const p = await screen.findByRole("paragraph")
+
+        expect(divGraffic).toBeInTheDocument()
+        expect(divElement).toBeInTheDocument()
+        expect(component).toBeInTheDocument()
+        expect(h4).toHaveTextContent("Despesas por Categoria")
+        expect(p).toHaveTextContent("Distribuição dos gastos")
     })
 })
 
