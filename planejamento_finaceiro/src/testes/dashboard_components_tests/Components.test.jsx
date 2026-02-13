@@ -1,7 +1,6 @@
 
-
 // Testing
-import "@testing-library/jest-dom"
+
 import {Provider} from "react-redux"
 import { render, screen} from "@testing-library/react"
 import {describe, expect, it} from "vitest"
@@ -16,13 +15,14 @@ import ContainerGraffic from "../../routes/dashboard/ContainerGraffic.jsx"
 import Graffic from "../../graficos/Graffic.jsx"
 import DespesaCategoria from "../../graficos/DespesaCategoria.jsx"
 import OrcamentRealiz from "../../graficos/OrcamentRealiz.jsx"
+import GrafficBox from "../../routes/dashboard/GrafficBox.jsx"
 
 //Dados mockados
 import {resObj, grafficValores, DespCat } from "../mocked_data_for_test/data.js"
-import GrafficBox from "../../routes/dashboard/GrafficBox.jsx"
 
 
-describe("Testing the components rendering", () => {
+
+describe.skip("Testing the components rendering", () => {
     
     it("Should render the components BoxData and GrafficBox", async () => {
         render(

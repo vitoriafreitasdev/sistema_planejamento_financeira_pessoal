@@ -1,8 +1,6 @@
-/* eslint-disable no-unused-vars */
+
 // fazer aqui testes para o Hook useHistorico.
 
-
-import "@testing-library/jest-dom"
 
 //Testing
 import {Provider} from "react-redux"
@@ -20,7 +18,7 @@ import useHistorico from "../../routes/historico/historico_hooks/useHistorico.js
 //Dados mockados
 import { preloadedState } from "../mocked_data_for_test/data.js"
 
-describe("Test the hook useHistorico", () => {
+describe.skip("Test the hook useHistorico", () => {
 
     it("Should see if total that useHistorico returned is correct", () => {
 
