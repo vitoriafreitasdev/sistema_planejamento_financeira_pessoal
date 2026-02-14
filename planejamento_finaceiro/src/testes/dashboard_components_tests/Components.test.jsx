@@ -18,11 +18,11 @@ import OrcamentRealiz from "../../graficos/OrcamentRealiz.jsx"
 import GrafficBox from "../../routes/dashboard/GrafficBox.jsx"
 
 //Dados mockados
-import {resObj, grafficValores, DespCat } from "../mocked_data_for_test/data.js"
+import {resObj, grafficValores, DespCat } from "../mocked_data_for_test/data.jsx"
 
 
 
-describe.skip("Testing the components rendering", () => {
+describe("Testing the components rendering", () => {
     
     it("Should render the components BoxData and GrafficBox", async () => {
         render(

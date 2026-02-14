@@ -1,5 +1,12 @@
 
 // Dados Mockados
+
+import { configureStore } from "@reduxjs/toolkit"
+import sistemaSlice from "../../redux/slices/sistemaSlice.js"
+import { Provider } from "react-redux"
+
+// Estado Inicial para reducer mockado 
+
 export const preloadedState = {
     sistema: {
         historico:  {
@@ -17,6 +24,20 @@ export const preloadedState = {
         saldoAtual: 4500
     }
 }
+
+// Redux store mockada
+
+export const mockedStore = configureStore({
+    reducer: {sistema: sistemaSlice},
+    preloadedState
+})
+
+//Encapsular Provider
+export const wrapper = ({ children }) => (
+    <Provider store={mockedStore}>
+        {children}
+    </Provider>
+)
 
 export const mockObjeto = {"transporte": {valor: "500", data: "2025-01-02", porcentagem: 50, restante: 500, orcamento: 1000 }}
 

@@ -5,33 +5,17 @@ import {Provider} from "react-redux"
 import {renderHook,} from "@testing-library/react"
 import {describe, expect, it} from "vitest"
 
-//Redux
-import { configureStore } from '@reduxjs/toolkit'
-import sistemaSlice from "../../redux/slices/sistemaSlice.js"
-
 //Functions
 import Dados from "../../utils/graficosDados.jsx";
 import dadosOrcamento from "../../utils/orcamentos.jsx"
 
 //Dados mockados
-import { preloadedState, mockObjeto, resObj, grafficValores, DespCat } from "../mocked_data_for_test/data.js"
+import { preloadedState, wrapper, mockObjeto, resObj, grafficValores, DespCat } from "../mocked_data_for_test/data.jsx"
 
-describe.skip("Testing the functions within the Dashboard component", () => {
+describe("Testing the functions within the Dashboard component", () => {
 
     // testando função Dados do arquivo graficosDados
     it("Should give the proper results", () => {
-        // Crie uma store com dados mockados
-        const mockStore = configureStore({
-            reducer:  {sistema: sistemaSlice},
-            preloadedState
-        })
-        
-        //Encapsular Provider
-        const wrapper = ({ children }) => (
-            <Provider store={mockStore}>
-                {children}
-            </Provider>
-        )
         
         const { result } = renderHook(() => Dados(), { wrapper })
 
@@ -52,19 +36,6 @@ describe.skip("Testing the functions within the Dashboard component", () => {
     //teste da função dadosOrcamento
     it("Should give the correct return", () => {
 
-        // Crie uma store com dados mockados
-        const mockStore = configureStore({
-            reducer:  {sistema: sistemaSlice},
-            preloadedState
-        })
-        
-        //Encapsular Provider
-        const wrapper = ({ children }) => (
-            <Provider store={mockStore}>
-                {children}
-            </Provider>
-        )
-        
         const result  = renderHook(() => dadosOrcamento(preloadedState.sistema.orcamentos, preloadedState.sistema.historico), { wrapper })
 
         expect(result.result.current).toStrictEqual(mockObjeto)

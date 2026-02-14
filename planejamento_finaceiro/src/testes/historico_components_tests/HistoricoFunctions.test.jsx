@@ -7,33 +7,16 @@ import {Provider} from "react-redux"
 import {renderHook, render, fireEvent, screen} from "@testing-library/react"
 import {describe, expect, it, vi} from "vitest"
 
-//Redux
-import { configureStore } from '@reduxjs/toolkit'
-import sistemaSlice from "../../redux/slices/sistemaSlice.js"
-
 //Functions
 import useHistorico from "../../routes/historico/historico_hooks/useHistorico.jsx"
 
-
 //Dados mockados
-import { preloadedState } from "../mocked_data_for_test/data.js"
+import { wrapper } from "../mocked_data_for_test/data.jsx"
 
-describe.skip("Test the hook useHistorico", () => {
+describe("Test the hook useHistorico", () => {
 
     it("Should see if total that useHistorico returned is correct", () => {
 
-        const mockedStore = configureStore(
-            {
-                reducer: {sistema: sistemaSlice},
-                preloadedState
-            }
-        )
-
-        const wrapper = ({children}) => ( 
-            <Provider store={mockedStore}> 
-                {children}
-            </Provider>
-        )
 
         const {result} = renderHook(() => useHistorico(), {wrapper})
 
@@ -43,18 +26,6 @@ describe.skip("Test the hook useHistorico", () => {
 
     it("Should see if the function 'excluir' is working the way it should be", () => {
 
-        const mockedStore = configureStore(
-            {
-                reducer: {sistema: sistemaSlice},
-                preloadedState
-            }
-        )
-
-        const wrapper = ({children}) => ( 
-            <Provider store={mockedStore}> 
-                {children}
-            </Provider>
-        )
 
         const {result} = renderHook(() => useHistorico(), {wrapper})
 
