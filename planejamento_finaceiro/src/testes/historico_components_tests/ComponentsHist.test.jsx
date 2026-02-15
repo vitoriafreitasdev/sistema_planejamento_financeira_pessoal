@@ -6,7 +6,7 @@
 
 // Testing
 import { fireEvent, render, renderHook, screen} from "@testing-library/react"
-import {describe, expect, it} from "vitest"
+import { describe, expect, it} from "vitest"
 import userEvent from '@testing-library/user-event'
 
 // Redux
@@ -21,8 +21,10 @@ import HistoricoContainer from "../../routes/historico/HistoricoContainer.jsx"
 import Dados from "../../routes/historico/Dados.jsx"
 import useHistorico from "../../routes/historico/historico_hooks/useHistorico.jsx"
 
+const {result} = renderHook(() => useHistorico(), {wrapper})
 
 describe("Test the historico components", () => {
+
 
     it("Should test if the component HistoricoContainer is rendering Historico Container. ", () => {
 
@@ -39,9 +41,6 @@ describe("Test the historico components", () => {
 
     it("Should test if HistoricoContainer is rendering the data properly", async () => {
         
-
-        const {result} = renderHook(() => useHistorico(), {wrapper})
-
         render(
             <HistoricoContainer total={result.current.total} excluir={result.current.excluir} dados={result.current.dados}/>
         )
@@ -59,7 +58,6 @@ describe("Test the historico components", () => {
     it("Should test if Dados is rendering all of the element inside of him correctly", () => {
 
         const data = {categoria: "salario", receita_desp: "receita", valor: "5000", descricao: "sal", data: "2025-01-01"}
-        const {result} = renderHook(() => useHistorico(), {wrapper})
 
         render(
             <Dados dd={data} excluir={result.current.excluir}/>
@@ -94,6 +92,25 @@ describe("Test the historico components", () => {
             expect(item).toBeInTheDocument()
         })
         
+    })
+
+    it("Should test if the content of the Data component elements is correct.", () => {
+        const data = {categoria: "salario", receita_desp: "receita", valor: "5000", descricao: "sal", data: "2025-01-01"}
+
+        render(
+            <Dados dd={data} excluir={result.current.excluir}/>
+        )
+
+        const span_desc = screen.getByTestId("span-desc")
+        const span_cat = screen.getByTestId("span-cat")
+        const p_data = screen.getByTestId("p-data")
+        const p_valor = screen.getByTestId("p-valor")
+
+        expect(span_desc).toHaveTextContent("sal")
+        expect(span_cat).toHaveTextContent("salario")
+        expect(p_data).toHaveTextContent("2025-01-01")
+        expect(p_valor).toHaveTextContent("5000")
+
     })
 
     it("Should test if when user click to delete data, data is being deleted correctly", async () => {

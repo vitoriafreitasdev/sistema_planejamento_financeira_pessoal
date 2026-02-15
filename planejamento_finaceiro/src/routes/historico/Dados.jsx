@@ -11,15 +11,14 @@ const Dados = ({dd, excluir}) => {
             <div className="itens-div1" data-testid="itemsdiv-1">
                 <img className="img-seta" src={dd.receita_desp == "receita" ? `${setaverde}` : `${setavermelha}`} alt="" />
                 <div data-testid="span-div">
-                  <span role="span" className="descricao-span">{dd.descricao} </span>
-                  <span role="span" className="categoria-span"> {dd.categoria}</span>
-                  <p className="data">{dd.data}</p>
+                  <span data-testid="span-desc" role="span" className="descricao-span">{dd.descricao} </span>
+                  <span data-testid="span-cat" role="span" className="categoria-span"> {dd.categoria}</span>
+                  <p data-testid="p-data" className="data">{dd.data}</p>
                 </div>
-                
             </div>
  
             <div className="itens-div" data-testid="itemsdiv-2" >
-                <p className={`${dd.receita_desp}-p`}>{dd.receita_desp == "receita" ? "+" : "-"}R$ {dd.valor} </p>  
+                <p data-testid="p-valor" className={`${dd.receita_desp}-p`}>{dd.receita_desp == "receita" ? "+" : "-"}R$ {dd.valor} </p>  
                 <img data-testid="excluir-btn"  className="img-icone" src={icone} alt="icone" onClick={() => excluir(dd.descricao, dd.categoria, dd.data)}/>
             </div>
         </div>

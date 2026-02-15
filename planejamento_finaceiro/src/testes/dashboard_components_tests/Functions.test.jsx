@@ -15,11 +15,10 @@ import { preloadedState, wrapper, mockObjeto, resObj, grafficValores, DespCat } 
 describe("Testing the functions within the Dashboard component", () => {
 
     // testando função Dados do arquivo graficosDados
-    it("Should give the proper results", () => {
+    it("Should test if give the proper results", () => {
         
         const { result } = renderHook(() => Dados(), { wrapper })
 
-    
         // Verificações específicas baseadas nos dados mockados
         expect(result.current.receitaTotal).toBe(5000)
         expect(result.current.totalDespesas).toBe(500)
@@ -34,7 +33,7 @@ describe("Testing the functions within the Dashboard component", () => {
     })
 
     //teste da função dadosOrcamento
-    it("Should give the correct return", () => {
+    it("Should test if give the correct return", () => {
 
         const result  = renderHook(() => dadosOrcamento(preloadedState.sistema.orcamentos, preloadedState.sistema.historico), { wrapper })
 

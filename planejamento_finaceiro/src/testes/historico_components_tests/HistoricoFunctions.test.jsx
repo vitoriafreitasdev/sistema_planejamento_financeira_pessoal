@@ -3,7 +3,6 @@
 
 
 //Testing
-import {Provider} from "react-redux"
 import {renderHook, render, fireEvent, screen} from "@testing-library/react"
 import {describe, expect, it, vi} from "vitest"
 
@@ -49,3 +48,4 @@ describe("Test the hook useHistorico", () => {
 
     })
 })
+
