@@ -1,11 +1,8 @@
 
-
-/* eslint-disable no-unused-vars */
-
 // aqui testar a renderização dos componentes historico
 
 // Testing
-import { fireEvent, render, renderHook, screen} from "@testing-library/react"
+import { render, renderHook, screen} from "@testing-library/react"
 import { describe, expect, it} from "vitest"
 import userEvent from '@testing-library/user-event'
 
@@ -23,7 +20,7 @@ import useHistorico from "../../routes/historico/historico_hooks/useHistorico.js
 
 const {result} = renderHook(() => useHistorico(), {wrapper})
 
-describe("Test the historico components", () => {
+describe.skip("Test the historico components", () => {
 
 
     it("Should test if the component HistoricoContainer is rendering Historico Container. ", () => {

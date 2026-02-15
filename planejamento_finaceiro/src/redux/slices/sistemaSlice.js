@@ -1,4 +1,5 @@
 
+//sistema slice
 import { createSlice } from "@reduxjs/toolkit";
 
 const localSave = localStorage.getItem("historico")

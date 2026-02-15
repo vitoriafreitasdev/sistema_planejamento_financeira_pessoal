@@ -1,3 +1,5 @@
+
+
 import { useState } from "react"
 import {useDispatch, useSelector} from "react-redux"
 import { addMetas, adicionarProgressoAsMetas } from "../../../redux/slices/sistemaSlice"
@@ -13,27 +15,26 @@ const useMetas = () => {
     const metas = useSelector((state) => state.sistema.metas)
 
     const adicionarMeta = () => {
+
         const objetoMeta = {
-        "meta": meta,
-        "valor": valor,
-        "progresso": 0,
-        "data": data
+            "meta": meta,
+            "valor": valor,
+            "progresso": 0,
+            "data": data
         }
 
         dispatch(addMetas(objetoMeta))
-
-        
     }
 
 
     const handleAdd = (key, quantidade) => {
         try {
-        dispatch(adicionarProgressoAsMetas({key: key, quantidade: quantidade}))
+            dispatch(adicionarProgressoAsMetas({key: key, quantidade: quantidade}))
         } catch (error) {
-        setMensagem(error.message)
-        setTimeout(() => {
-            setMensagem(null)
-        }, 2000)
+            setMensagem(error.message)
+            setTimeout(() => {
+                setMensagem(null)
+            }, 2000)
         }
     }
 

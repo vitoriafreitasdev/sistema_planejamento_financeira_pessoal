@@ -20,7 +20,7 @@ export const preloadedState = {
         receitaTotal: 5000,
         categoriaDeDespesas: {"transporte": {valor: 500, porcentagem: 100}},
         orcamentos: {"Lazer": 500, "transporte": 1000, "moradia": 1200, "alimentação": 1000},
-        metas:  {"Carro": {valor: 80000, progresso: 10000, data: "2028-02-09", restante: 730, porcentagem: Math.floor(12.5)}},
+        metas:  {"Carro": {valor: "80000", progresso: 0, data: "2028-02-09", restante: 723, porcentagem: 0}},
         saldoAtual: 4500
     }
 }

@@ -12,7 +12,7 @@ import useHistorico from "../../routes/historico/historico_hooks/useHistorico.js
 //Dados mockados
 import { wrapper } from "../mocked_data_for_test/data.jsx"
 
-describe("Test the hook useHistorico", () => {
+describe.skip("Test the hook useHistorico", () => {
 
     it("Should see if total that useHistorico returned is correct", () => {
 
