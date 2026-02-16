@@ -201,7 +201,6 @@ const sistemaSlice = createSlice(
                 // porcentagem
                 const porcentagem =  (objeto.progresso/objeto.valor) * 100
 
-                
                 state.metas[objeto.meta] = {valor: objeto.valor, progresso: parseFloat(objeto.progresso), data: objeto.data, restante: diasRest, porcentagem: Math.floor(porcentagem)}
 
                 localStorage.setItem("metas", JSON.stringify(state.metas))

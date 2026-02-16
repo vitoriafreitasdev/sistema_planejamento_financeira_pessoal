@@ -21,7 +21,13 @@ const Container = ({nome, p, valor, meta, porcentagem, restante, orcamento=true,
                 <span className="span-valor">R$ {valor}</span> 
                 <span className="span-valor-orcamento">de R${meta}</span>
             </div>
-            <input className="input-range" type="range" value={valor } max={meta}/>
+            <input
+              className="input-range"
+              type="range"
+              value={valor}
+              max={meta}
+              readOnly
+            />
             </div>
 
             <div className="orcamento-div2">

@@ -1,6 +1,6 @@
 
 // Dados Mockados
-
+// data.jsx
 import { configureStore } from "@reduxjs/toolkit"
 import sistemaSlice from "../../redux/slices/sistemaSlice.js"
 import { Provider } from "react-redux"
@@ -27,16 +27,30 @@ export const preloadedState = {
 
 // Redux store mockada
 
-export const mockedStore = configureStore({
-    reducer: {sistema: sistemaSlice},
+// export const mockedStore = configureStore({
+//     reducer: {sistema: sistemaSlice},
+//     preloadedState
+// })
+
+// //Encapsular Provider
+// export const wrapper = ({ children }) => (
+//     <Provider store={mockedStore}>
+//         {children}
+//     </Provider>
+// )
+
+// assim para evitar vazamento de dados
+
+export const createMockStore = () =>
+  configureStore({
+    reducer: { sistema: sistemaSlice },
     preloadedState
 })
 
-//Encapsular Provider
 export const wrapper = ({ children }) => (
-    <Provider store={mockedStore}>
-        {children}
-    </Provider>
+  <Provider store={createMockStore()}>
+    {children}
+  </Provider>
 )
 
 export const mockObjeto = {"transporte": {valor: "500", data: "2025-01-02", porcentagem: 50, restante: 500, orcamento: 1000 }}
