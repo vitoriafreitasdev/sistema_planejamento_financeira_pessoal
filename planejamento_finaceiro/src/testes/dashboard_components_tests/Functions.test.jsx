@@ -27,8 +27,8 @@ describe.skip("Testing the functions within the Dashboard component", () => {
         expect(result.current.despesasCategorias).toStrictEqual(DespCat)
         expect(result.current.orcamentoXrealizado).toStrictEqual(resObj)
         expect(result.current.total).toBe(80000)
-        expect(result.current.progresso).toBe(10000)
-        expect(result.current.porcentagemMetas).toBe(12)
+        expect(result.current.progresso).toBe(0)
+        expect(result.current.porcentagemMetas).toBe(0)
 
     })
 

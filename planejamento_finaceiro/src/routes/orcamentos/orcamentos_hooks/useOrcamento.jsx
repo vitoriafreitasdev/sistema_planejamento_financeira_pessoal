@@ -15,14 +15,14 @@ const useOrcamento = () => {
 
     const adicionarOrcamento = () => {
         if(categoria.length == 0 || orcamentoNum.length == 0){
-        setMensagem("Preencha tudo.")
-        return
+            setMensagem("Preencha tudo.")
+            return
         }
         dispatch(addOrcamento({categoria: categoria, orcamento: orcamentoNum}))
         setMensagem("Adicionado com sucesso.")
 
         setTimeout(() => {
-        setMensagem("")
+            setMensagem("")
         }, 2000)
     }
 

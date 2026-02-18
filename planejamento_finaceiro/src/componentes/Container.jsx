@@ -12,14 +12,14 @@ const Container = ({nome, p, valor, meta, porcentagem, restante, orcamento=true,
     <div className="orcamento-container">
                 
             <div className="h4-img-div">
-            <h4>{p}</h4>
+            <h4 >{p}</h4>
              <img className="lixeira-img" src={lix} alt="lixeira-icon" onClick={() => exclusao(nome)}/>
             </div>
 
             <div className="orcamento-div1">
             <div className="span-div">
                 <span className="span-valor">R$ {valor}</span> 
-                <span className="span-valor-orcamento">de R${meta}</span>
+                <span className="span-valor-orcamento" data-testid="span">de R${meta}</span>
             </div>
             <input
               className="input-range"

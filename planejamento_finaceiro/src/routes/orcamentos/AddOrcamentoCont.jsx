@@ -8,7 +8,7 @@ const AddOrcamentoCont = ({props}) => {
             <h3>Adicionar Orçamento</h3>
             <p className="subtitulo">Definina limites gastos por categoria</p>
             <p className="p-info-orcamento">Categoria</p>
-            <select className="orcamentos-select" onChange={(e) => props.setCategoria(e.target.value)}>
+            <select className="orcamentos-select" data-testid="selectCat" onChange={(e) => props.setCategoria(e.target.value)}>
               <option value="">Selecione uma categoria</option>
               <option value="alimentacao">Alimentação</option>
               <option value="transporte">Transporte</option>
@@ -16,7 +16,7 @@ const AddOrcamentoCont = ({props}) => {
               <option value="Lazer">Lazer</option>
             </select> 
             <p className="p-info-orcamento">Limite Mensal (R$)</p>
-            <input className="orcamento-input" type="number" placeholder="0,00" onChange={(e) =>props.setOrcamentoNum(e.target.value)}/>
+            <input className="orcamento-input" data-testid="inputNum" type="number" placeholder="0,00" onChange={(e) =>props.setOrcamentoNum(e.target.value)}/>
             <button className="orcamento-button" onClick={props.adicionarOrcamento}>+ Adicionar Orçamento</button>
     </div>
   )
