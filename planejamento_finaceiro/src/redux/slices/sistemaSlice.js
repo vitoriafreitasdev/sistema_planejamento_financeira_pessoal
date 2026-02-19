@@ -29,15 +29,14 @@ const sistemaSlice = createSlice(
         initialState: estadoInicial,
         reducers: {
             passarTransacao: (state, action) => {
-                const historicoSalvo = JSON.parse(localSave)
                 
-                if(historicoSalvo){
-                    const historicoTam = Object.keys(JSON.parse(localSave)).length
+                if(Object.keys(state.historico).length > 0){
+                    const historicoTam = Object.keys(state.historico).length
 
                     if(historicoTam >= 12){
-                        const newKeys = Object.keys(historicoSalvo).slice(5, 12)
+                        const newKeys = Object.keys(state.historico).slice(6, 12)
                         const filteredObject = Object.fromEntries(
-                        Object.entries(historicoSalvo).filter(([key]) => {
+                        Object.entries(state.historico).filter(([key]) => {
                             return newKeys.includes(key);
                         })
                         );

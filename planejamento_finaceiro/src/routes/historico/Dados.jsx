@@ -4,6 +4,7 @@ import setaverde from "../../images/setaverde2.avif"
 import setavermelha from "../../images/seta2.avif"
 
 const Dados = ({dd, excluir}) => {
+
   return (
     <div data-testid="Dados" key={dd.categoria + dd.descricao + dd.data} className={`transicoes ${dd.receita_desp}s`}>
 

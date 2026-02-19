@@ -50,4 +50,14 @@ const dataAtual = `${dia}/${mes}/${ano}`;
 console.log(dataAtual); // Ex: "28/01/2026" [3, 8]
 
 
-console.log(Math.floor((1000/80000) * 100))
+
+
+const porcent = {
+    "t": Math.round((2390 / 14825) * 100),
+    "a": Math.round((5450 / 14825) * 100),
+    "l": Math.round((985 / 14825) * 100),
+    "m": Math.round((6000 / 14825) * 100)
+}
+
+
+console.log(porcent)
