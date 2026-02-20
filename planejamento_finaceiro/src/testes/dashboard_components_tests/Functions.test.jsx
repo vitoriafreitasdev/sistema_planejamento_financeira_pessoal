@@ -12,7 +12,7 @@ import dadosOrcamento from "../../utils/orcamentos.jsx"
 //Dados mockados
 import { preloadedState, wrapper, mockObjeto, resObj, grafficValores, DespCat } from "../mocked_data_for_test/data.jsx"
 
-describe.skip("Testing the functions within the Dashboard component", () => {
+describe("Testing the functions within the Dashboard component", () => {
 
     // testando função Dados do arquivo graficosDados
     it("Should test if give the proper results", () => {

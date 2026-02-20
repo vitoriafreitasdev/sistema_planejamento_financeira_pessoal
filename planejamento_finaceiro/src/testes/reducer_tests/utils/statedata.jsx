@@ -76,12 +76,11 @@ export const histDados = {
         "2026/01": 
         [
             {categoria: "salario", receita_desp: "receita", valor: 5000, descricao: "nova receita registrada", data: "2026-01-01"},
-            {categoria: "transporte", receita_desp: "despesa", valor: 500, descricao: "nova despesa registrada", data: "2026-01-03"},
             {categoria: "moradia", receita_desp: "despesa", valor: 1200, descricao: "nova despesa registrada", data: "2026-01-05"}
         ],
         "2026/02": [
             {categoria: "salario", receita_desp: "receita", valor: 5000, descricao: "nova receita registrada", data: "2026-02-01"},
-            {categoria: "Lazer", receita_desp: "despesa", valor: 100, descricao: "nova despesa registrada", data: "2026-02-25"},
-            {categoria: "moradia", receita_desp: "despesa", valor: 1200, descricao: "nova despesa registrada", data: "2026-02-05"}
+            {categoria: "transporte", receita_desp: "despesa", valor: 600, descricao: "nova despesa registrada", data: "2026-02-03"},
+            {categoria: "alimentacao", receita_desp: "despesa", valor: 1200, descricao: "nova despesa registrada", data: "2026-02-09"}
         ]
 }

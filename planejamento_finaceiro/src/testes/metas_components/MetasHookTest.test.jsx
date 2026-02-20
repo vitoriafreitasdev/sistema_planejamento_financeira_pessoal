@@ -14,7 +14,7 @@ import Metas from "../../routes/metas/Metas.jsx"
 //Dados mockados
 import { wrapper } from "../mocked_data_for_test/data.jsx"
 
-describe.skip("Testing the hook useMetas", () => {
+describe("Testing the hook useMetas", () => {
 
     it("Should be able to add metas properly", async () => {
         const { result } = renderHook(() => useMetas(), { wrapper })

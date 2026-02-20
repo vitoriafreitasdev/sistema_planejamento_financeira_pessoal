@@ -169,6 +169,7 @@ const sistemaSlice = createSlice(
                 localStorage.removeItem("dados")
                 const dadosParaStorage = JSON.stringify(novosDados)
                 localStorage.setItem("dados", dadosParaStorage)
+
             },
             addOrcamento: (state, action) => {
                 const cat = action.payload.categoria

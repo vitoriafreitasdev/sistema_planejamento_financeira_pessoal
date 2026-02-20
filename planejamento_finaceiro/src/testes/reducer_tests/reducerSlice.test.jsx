@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars */
+
 
 import {describe, it, expect} from "vitest"
 
@@ -145,16 +145,121 @@ describe("Testing the reducer slice", () => {
     })
 
     it("Testing if is deleting correctly the data in 'excluirDados' function", () => {
-        // continuar esse
+ 
         const estadoInicial = createState()
         const dados = Object.values(histDados)
 
         estadoInicial.historico = histDados
         estadoInicial.dados = dados
 
-        const res = reducer(estadoInicial, excluirDados("nova receita registrada", "despesa", "2026-01-03"))
+        const data = {categoria: "alimentacao", receita_desp: "despesa", valor: 1200, descricao: "nova despesa registrada", data: "2026-02-09"}
 
-        console.log(res.dados)
+        const res = reducer(estadoInicial, excluirDados({descricao: data.descricao, categoria: data.categoria, data: data.data}))
+       
+       const expectResult = [
+            [
+                {categoria: "salario", receita_desp: "receita", valor: 5000, descricao: "nova receita registrada", data: "2026-01-01"},
+                {categoria: "moradia", receita_desp: "despesa", valor: 1200, descricao: "nova despesa registrada", data: "2026-01-05"}
+            ],
+            [
+                {categoria: "salario", receita_desp: "receita", valor: 5000, descricao: "nova receita registrada", data: "2026-02-01"},
+                {categoria: "transporte", receita_desp: "despesa", valor: 600, descricao: "nova despesa registrada", data: "2026-02-03"}
+            ]
+        ]
+
+        expect(res.dados).toStrictEqual(expectResult)
         
+    })
+
+    it("Testing if is adding correctly the data in 'addOrcamento' function", () => {
+
+        const estadoInicial = createState()
+        
+        const res = reducer(estadoInicial, addOrcamento({categoria: "transporte", orcamento: 500}))
+
+        const resEsperado = {"transporte": 500}
+
+        expect(res.orcamentos).toStrictEqual(resEsperado)
+
+    })
+
+    it("Testing if is deleting correctly the data in 'excluirOrcamento' function", () => {
+
+        const estadoInicial = createState()
+
+        estadoInicial.orcamentos = {"transporte": 700, "alimentacao": 1500}
+        
+        const res = reducer(estadoInicial, excluirOrcamento("transporte"))
+
+        const resEsperado = {"alimentacao": 1500}
+
+        expect(res.orcamentos).toStrictEqual(resEsperado)
+
+
+    })
+
+    it("Testing if 'addMetas' is functional", () => {
+
+        const estadoInicial = createState()
+
+        const objetoMeta = {
+            meta: "Carro",
+            valor: 5000,
+            progresso: 0,
+            data: "2027-01-01"
+        }
+
+        const res = reducer(estadoInicial, addMetas(objetoMeta))
+
+        const dataAtual = new Date()
+        const data = new Date(objetoMeta.data)
+        const diffMs = data.getTime() - dataAtual.getTime()
+        const diasRest = Math.floor(diffMs / (1000 * 60 * 60 * 24))
+
+        const resEsperado = {
+            "Carro": {valor: 5000, progresso: 0, data: "2027-01-01", restante: diasRest, porcentagem: 0}
+        }
+
+        expect(res.metas).toStrictEqual(resEsperado)
+    })
+
+    it("test if 'atualizarSaldo' is working properly", () => {
+
+        const estadoInicial = createState()
+
+        const res = reducer(estadoInicial, atualizarSaldo(5000))
+
+        expect(res.saldoAtual).toBe(5000)
+    })
+
+    it("test if 'adicionarProgressoAsMetas' its adding progress to the state.metas", () => {
+
+        const estadoInicial = createState()
+
+        estadoInicial.metas = {
+            "Carro": {valor: 50000, progresso: 0, data: "2027-01-01", restante: "314", porcentagem: 0}
+        }
+
+        estadoInicial.saldoAtual = 10000
+
+        const res = reducer(estadoInicial, adicionarProgressoAsMetas({key: "Carro", quantidade: 5000}))
+
+        const resEsperado = {
+            "Carro": {valor: 50000, progresso: 5000, data: "2027-01-01", restante: "314", porcentagem: 10}
+        }
+
+        expect(res.metas).toStrictEqual(resEsperado)
+    })
+
+    it("test if 'excluirMetas' delete state.metas correctly", () => {
+        const estadoInicial = createState()
+
+        estadoInicial.metas = {
+            "Carro": {valor: 50000, progresso: 0, data: "2027-01-01", restante: "314", porcentagem: 0}
+        }
+
+        const res = reducer(estadoInicial, excluirMetas("Carro"))
+
+        expect(res.metas).toStrictEqual({})
     })
 })

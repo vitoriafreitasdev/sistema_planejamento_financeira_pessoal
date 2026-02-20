@@ -8,7 +8,7 @@ import userEvent from '@testing-library/user-event'
 import Orcamentos from "../../routes/orcamentos/Orcamentos"
 import useOrcamento from "../../routes/orcamentos/orcamentos_hooks/useOrcamento"
 
-describe.skip("Test the hook useOrcamentos and the Orcamentos component", () => {
+describe("Test the hook useOrcamentos and the Orcamentos component", () => {
 
    it("Should add properly", () => {
         const {result} = renderHook(() => useOrcamento(), {wrapper})

@@ -20,7 +20,7 @@ import useHistorico from "../../routes/historico/historico_hooks/useHistorico.js
 
 const {result} = renderHook(() => useHistorico(), {wrapper})
 
-describe.skip("Test the historico components", () => {
+describe("Test the historico components", () => {
 
 
     it("Should test if the component HistoricoContainer is rendering Historico Container. ", () => {
