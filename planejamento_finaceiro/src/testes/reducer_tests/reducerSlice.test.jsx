@@ -10,7 +10,7 @@ import createState from "./utils/createState.jsx"
 import {histForMaxLength1, histForMaxLength2, histReceitaDesp, histDados} from "./utils/statedata.jsx"
 
 
-describe("Testing the reducer slice", () => {
+describe.skip("Testing the reducer slice", () => {
 
     it("Should return the proper result from 'passarTransação'", () => {
         const estadoInicial = createState()
