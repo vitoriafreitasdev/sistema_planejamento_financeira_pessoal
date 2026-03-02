@@ -1,4 +1,6 @@
 
+/* eslint-disable no-unused-vars */
+
 //Dashboard.jsx
 import "./Dashboard.css"
 
@@ -9,13 +11,20 @@ import BoxData from "./BoxData.jsx"
 import GrafficBox from "./GrafficBox.jsx"
 import ContainerGraffic from "./ContainerGraffic.jsx"
 
+
+import dadosParaCsvBtn from "../../utils/dadosParaCsvBtn.jsx"
+
+
+
 const Dashboard = () => {
-  const {grafficValores, despesasCategorias, totalDespesas, receitaTotal, saldoAtual, orcamentoXrealizado, total, progresso, porcentagemMetas} = Dados()
+    const {grafficValores, despesasCategorias, totalDespesas, receitaTotal, saldoAtual, orcamentoXrealizado, total, progresso, porcentagemMetas} = Dados()
+    const dados = dadosParaCsvBtn(receitaTotal, totalDespesas, saldoAtual)
+
 
   return (
     <div className='dashboard-main-container'>
         <div className='container-info'>
-            
+
             <BoxData title={"Saldo Total"} valueP1={saldoAtual} valueP2={saldoAtual > 0 ? "Saldo positivo" : "Saldo negativo"} P1ClassName={"p-num"} P2ClassName={`p-info ${saldoAtual > 0 ? "saldo-positivo" : "saldo-negativo"}`}/>
 
             <BoxData title={"Receita Total"} valueP1={receitaTotal} valueP2={"Total de receita registrada"} P1ClassName={"p-num saldo"} P2ClassName={"p-info saldo-info"}/>
@@ -28,13 +37,16 @@ const Dashboard = () => {
 
         <div className="container-graficos">
 
-            <GrafficBox classN={"tendencia-mensal"} title={"Tendencia Mensal"} pContent={"Receitas vs Despesas, últimas 6 registradas"} classN2={"grafico-div"} component={<Graffic key="tendencia-mensal-chart"  chartData={grafficValores} />}/>
+            <GrafficBox classN={"tendencia-mensal"} title={"Tendencia Mensal"} pContent={"Receitas vs Despesas, últimas 6 registradas"} classN2={"grafico-div"} component={<Graffic key="tendencia-mensal-chart"  chartData={grafficValores} dados={dados} />}/>
 
             <GrafficBox classN={"despesa-categoria"} title={"Despesas por Categoria"} pContent={"Distribuição dos gastos"} classN2={"grafico-div"} component={<DespesaCategoria key="despesas-por-categoria" despesa={despesasCategorias}/>}/>
-            
-        </div>
 
+        
+        </div>
+        
         <ContainerGraffic orcamentoXrealizado={orcamentoXrealizado}/>
+
+
 
     </div>
   )

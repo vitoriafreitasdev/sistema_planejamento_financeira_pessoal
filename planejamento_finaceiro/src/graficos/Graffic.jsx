@@ -3,8 +3,9 @@
 import "./Graffics.css"
 import "./configs/Bar"
 import {  Bar } from 'react-chartjs-2';
+import ButtonCSV from "../componentes/ButtonCSV.jsx"
 
-export default function Graffic({ chartData }) {
+export default function Graffic({ chartData, dados }) {
   return (
     <div className="chart-container" data-testid="Graffic">
       
@@ -22,7 +23,11 @@ export default function Graffic({ chartData }) {
             }
           }
         }}
-      />
+    />
+
+      
+    <ButtonCSV data={dados} filename={"receita_despesas"}/>
+     
     </div>
   );
 }
