@@ -1,14 +1,14 @@
+/* eslint-disable no-unused-vars */
 
-export default function  dadosParaCsvBtn(receitaTotal, totalDespesas, saldoAtual){
+// funcao que ajusta os dados para o Csv
+export default function  dadosParaCsvBtn(labels, receita, despesa){
+
+     return labels.map((data) => (
+          {
+               data,
+               receita: receita[data] || "Não disponível",
+               despesa: despesa[data] || "Não disponível"
+          }
+     ))
      
-     // Aqui fazer um objeto javascript que vai ter toda a receita registrada e todas despesas registradas
-
-     const dados = {
-          receita: receitaTotal,
-          despesa: totalDespesas,
-          saldo_atual: saldoAtual
-     }
-
-     return dados
 }
-

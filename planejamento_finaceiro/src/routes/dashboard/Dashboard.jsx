@@ -17,8 +17,9 @@ import dadosParaCsvBtn from "../../utils/dadosParaCsvBtn.jsx"
 
 
 const Dashboard = () => {
-    const {grafficValores, despesasCategorias, totalDespesas, receitaTotal, saldoAtual, orcamentoXrealizado, total, progresso, porcentagemMetas} = Dados()
-    const dados = dadosParaCsvBtn(receitaTotal, totalDespesas, saldoAtual)
+    const {grafficValores, despesasCategorias, totalDespesas, receitaTotal, saldoAtual, orcamentoXrealizado, total, progresso, porcentagemMetas, labels, receita, despesa} = Dados()
+   
+    const dados = dadosParaCsvBtn( labels, receita, despesa)
 
 
   return (
@@ -37,7 +38,7 @@ const Dashboard = () => {
 
         <div className="container-graficos">
 
-            <GrafficBox classN={"tendencia-mensal"} title={"Tendencia Mensal"} pContent={"Receitas vs Despesas, últimas 6 registradas"} classN2={"grafico-div"} component={<Graffic key="tendencia-mensal-chart"  chartData={grafficValores} dados={dados} />}/>
+            <GrafficBox classN={"tendencia-mensal"} title={"Tendencia Mensal"} pContent={"Receitas vs Despesas, últimas 6 registradas"} classN2={"grafico-div"} component={<Graffic key="tendencia-mensal-chart"  chartData={grafficValores} dados={dados}  />}/>
 
             <GrafficBox classN={"despesa-categoria"} title={"Despesas por Categoria"} pContent={"Distribuição dos gastos"} classN2={"grafico-div"} component={<DespesaCategoria key="despesas-por-categoria" despesa={despesasCategorias}/>}/>
 

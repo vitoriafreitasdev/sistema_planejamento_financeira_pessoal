@@ -101,7 +101,7 @@ export default function  Dados(){
             }
         ]
     })
-    return {grafficValores, despesasCategorias, totalDespesas, receitaTotal, saldoAtual, orcamentoXrealizado, total, progresso, porcentagemMetas}
+    return {grafficValores, despesasCategorias, totalDespesas, receitaTotal, saldoAtual, orcamentoXrealizado, total, progresso, porcentagemMetas, labels, receita, despesa}
     
 }
 

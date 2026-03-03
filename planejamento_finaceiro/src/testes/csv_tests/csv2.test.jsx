@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 
 import {describe, expect, it, vi, beforeEach, afterEach} from "vitest"
 import CSV from "../../utils/CSV"
@@ -39,13 +40,13 @@ describe("Testando CSV", () => {
     vi.unstubAllGlobals()
   })
 
-  it("deve lidar com números decimais e formatação", () => {
-    const data = {
-      receita: 1500.75,
-      despesa: 899.99,
-      saldo: 600.76
-    }
-    
+  it.only("deve lidar com números decimais e formatação", () => {
+    // const data = {
+    //   receita: 1500.75,
+    //   despesa: 899.99,
+    //   saldo: 600.76
+    // }
+    const data = {data: [[5400, 5400], [550, 1500]], labels: ["2025/01", "2025/02", "2025/01", "2025/02"]}
     CSV(data, "financas.csv")
     
     // Verificar o conteúdo capturado

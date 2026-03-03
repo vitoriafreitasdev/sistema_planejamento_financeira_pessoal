@@ -1,5 +1,5 @@
 
-// Componente Graffic
+// Componente Graffic onde esta o butao de dowload
 import "./Graffics.css"
 import "./configs/Bar"
 import {  Bar } from 'react-chartjs-2';
@@ -26,7 +26,7 @@ export default function Graffic({ chartData, dados }) {
     />
 
       
-    <ButtonCSV data={dados} filename={"receita_despesas"}/>
+     <ButtonCSV data={dados} filename={"receita_despesas"}/> 
      
     </div>
   );

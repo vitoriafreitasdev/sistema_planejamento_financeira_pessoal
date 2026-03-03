@@ -61,3 +61,16 @@ const porcent = {
 
 
 console.log(porcent)
+
+
+const labels = ["2025/01", "2025/02"]
+
+const receita = {
+    "2025/01": 5400,
+    "2025/02": 5400
+}
+
+const despesa = {
+    "2025/01": 550,
+    "2025/02": 1500
+}
