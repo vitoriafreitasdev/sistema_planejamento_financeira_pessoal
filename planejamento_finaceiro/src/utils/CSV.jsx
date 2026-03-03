@@ -12,8 +12,6 @@ export default function CSV(data, filename) {
     )
   ].join("\n")
 
-
-  console.log(csvString)
   
   const blob = new Blob([csvString], { type: "text/csv;charset=utf-8;" })
   const url = URL.createObjectURL(blob)

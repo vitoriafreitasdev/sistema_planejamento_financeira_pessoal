@@ -1,41 +1,61 @@
 
-import { render, screen } from "@testing-library/react"
-import userEvent from '@testing-library/user-event'
-import {describe, expect, it, vi, beforeEach} from "vitest"
 
-import ButtonCSV from "../../componentes/ButtonCSV"
+import {describe, expect, it, vi, beforeEach, afterEach} from "vitest"
+import {renderHook} from "@testing-library/react"
 
-// Mock do módulo CSV antes dos testes
-vi.mock("../../utils/CSV", () => ({
-  default: vi.fn()
-}))
+import CSV from "../../utils/CSV.jsx"
+import dadosParaCsvBtn from "../../utils/dadosParaCsvBtn.jsx"
 
-// Importar o CSV depois do mock para pegar a versão mockada
-import CSV from "../../utils/CSV"
 
-describe.skip("Testing CSV", () => {
+describe("Testando CSV", () => {
+  let csvContentCapturado
+
   beforeEach(() => {
-    vi.clearAllMocks()
+    // Mock do Blob que captura o conteúdo
+
+    vi.stubGlobal('Blob', vi.fn().mockImplementation((content, options) => {
+        // passa o conteudo para a variavel
+        csvContentCapturado = content[0] 
+        // Em vez de criar um blob de verdade, apenas:
+        // Retorna um objeto simples (não é um blob de verdade)
+        return { 
+            content, 
+            options,
+            tamanhoFalso: 123 
+        }
+    }))
+    
+    // Mock do URL (só para não dar erro)
+    vi.stubGlobal('URL', {
+      createObjectURL: vi.fn(),
+      revokeObjectURL: vi.fn()
+    })
+    
+    
+  })
+  
+  afterEach(() => {
+    vi.unstubAllGlobals()
   })
 
-  it("Test integration: button click triggers CSV download", async () => {
-    const data = { janeiro: 4324, fevereiro: 6606, marco: 5422 }
-    const filename = "test-data.csv"
-    const user = userEvent.setup()
-    
-    render(
-      <ButtonCSV data={data} filename={filename} />
-    )
+  it.only("deve lidar com números decimais e formatação", () => {
+    const labels = ["2025/01", "2025/02"]
 
-    const btnCsv = screen.getByTestId("btn-csv")
+    const receita = {
+        "2025/01": 5000,
+        "2025/02": 2300
+    }
+
+    const despesa = {
+        "2025/01": 1300,
+        "2025/02": 300
+    }
     
-    // Clicar no botão
-    await user.click(btnCsv)
+    const {result} = renderHook(() => dadosParaCsvBtn(labels, receita, despesa))
+
+    CSV(result.current, "financas.csv")
     
-    // Verificar se a função CSV mockada foi chamada
-    expect(CSV).toHaveBeenCalledTimes(1)
-    expect(CSV).toHaveBeenCalledWith(data, filename)
+    // Verificar o conteúdo capturado
+    expect(csvContentCapturado).toBe("data,receita,despesa\n2025/01,5000,1300\n2025/02,2300,300")
   })
-
-
 })

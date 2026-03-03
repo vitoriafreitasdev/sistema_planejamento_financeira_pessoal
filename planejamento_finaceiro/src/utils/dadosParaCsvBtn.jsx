@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 
 // funcao que ajusta os dados para o Csv
 export default function  dadosParaCsvBtn(labels, receita, despesa){
